@@ -1,7 +1,7 @@
 import './App.scss'
 
 const App = () => {
-  return <div className="App">initial boilerplate</div>
+  return <div className="App">Running on develop</div>
 }
 
 export default App
