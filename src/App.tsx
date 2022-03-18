@@ -1,7 +1,7 @@
-import './App.scss'
+import Root from 'routes'
 
 const App = () => {
-  return <div className="App">Running on develop</div>
+  return <Root />
 }
 
 export default App
