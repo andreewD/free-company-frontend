@@ -1,0 +1,31 @@
+.headerContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  padding: 0.5rem 2rem;
+  .logoContainer {
+    height: 2rem;
+    img {
+      height: 100%;
+    }
+  }
+
+  .socialButton {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+
+    a {
+      height: 1.75rem;
+      cursor: pointer;
+      img {
+        height: 100%;
+      }
+    }
+  }
+}
