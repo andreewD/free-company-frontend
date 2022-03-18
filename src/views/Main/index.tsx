@@ -1,5 +1,5 @@
 const Main = () => {
-  return <div>Main View xDD</div>
+  return <div>Main View</div>
 }
 
 export default Main
