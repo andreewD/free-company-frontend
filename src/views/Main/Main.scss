@@ -17,6 +17,7 @@
     left: 50%;
     transform: translateX(-50%);
     animation: flicker 1.5s linear infinite;
+    cursor: pointer;
     img {
       height: 100%;
     }
