@@ -1,11 +1,12 @@
 import { Header } from 'components'
-import Router from './Router'
+import render from './render'
+import routes from './routes'
 
 const Root = () => {
   return (
     <div>
       <Header />
-      <Router />
+      {render(routes)}
     </div>
   )
 }
