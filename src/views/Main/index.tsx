@@ -1,4 +1,4 @@
-import { FeaturedProducts, Home, Sectors } from './sections'
+import { Customers, FeaturedProducts, Home, Sectors } from './sections'
 
 const Main = () => {
   return (
@@ -6,6 +6,7 @@ const Main = () => {
       <Home />
       <FeaturedProducts />
       <Sectors />
+      <Customers />
     </>
   )
 }
