@@ -3,11 +3,11 @@ import './styles.scss'
 
 const Home = () => {
   return (
-    <div className="mainContainer">
+    <section className="mainContainer">
       <button className="arrowButton">
         <img src={ArrowButton} alt="arrow" />
       </button>
-    </div>
+    </section>
   )
 }
 
