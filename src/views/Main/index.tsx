@@ -1,14 +1,7 @@
-import { ArrowButton } from 'assets'
-import './Main.scss'
+import { Home } from './sections'
 
 const Main = () => {
-  return (
-    <div className="mainContainer">
-      <button className="arrowButton">
-        <img src={ArrowButton} alt="arrow" />
-      </button>
-    </div>
-  )
+  return <Home />
 }
 
 export default Main
