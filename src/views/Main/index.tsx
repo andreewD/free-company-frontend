@@ -1,7 +1,13 @@
-import { Home } from './sections'
+import { FeaturedProducts, Home, Sectors } from './sections'
 
 const Main = () => {
-  return <Home />
+  return (
+    <>
+      <Home />
+      <FeaturedProducts />
+      <Sectors />
+    </>
+  )
 }
 
 export default Main
