@@ -1,4 +1,4 @@
-import { Header } from 'components'
+import { Footer, Header } from 'components'
 import render from './render'
 import routes from './routes'
 
@@ -7,6 +7,7 @@ const Root = () => {
     <div>
       <Header />
       {render(routes)}
+      <Footer />
     </div>
   )
 }
