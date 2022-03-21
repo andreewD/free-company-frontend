@@ -5,7 +5,26 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(53, 53, 53);
+  background-color: rgb(255, 255, 255);
+}
+
+html {
+  scroll-behavior: smooth;
+  // height: 100%;
+}
+
+body::-webkit-scrollbar {
+  width: 10px;               /* width of the entire scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+  background: rgb(216, 216, 216);        /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: rgb(34, 34, 34);    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */
+  border: 3px solid rgb(216, 216, 216);  /* creates padding around scroll thumb */
 }
 
 code {
@@ -17,4 +36,6 @@ code {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  outline: none;
+  text-decoration: none;
 }

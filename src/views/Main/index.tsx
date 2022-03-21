@@ -1,13 +1,20 @@
-import { ArrowButton } from 'assets'
-import './Main.scss'
+import {
+  Customers,
+  FeaturedProducts,
+  Home,
+  Sectors,
+  Statistics,
+} from './sections'
 
 const Main = () => {
   return (
-    <div className="mainContainer">
-      <button className="arrowButton">
-        <img src={ArrowButton} alt="arrow" />
-      </button>
-    </div>
+    <main>
+      <Home />
+      <FeaturedProducts />
+      <Sectors />
+      <Customers />
+      <Statistics />
+    </main>
   )
 }
 
