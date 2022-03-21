@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { ChevronLeft, ChevronRight } from 'assets'
 import './styles.scss'
 
 const imagesList = [
@@ -61,7 +62,7 @@ const Swiper = () => {
           onClick={leftButton}
           disabled={swiperLength === 0}
         >
-          ATRAS
+          <img src={ChevronLeft} alt="ChevronLeft" />
         </button>
         <div className="swiperContainer">
           <div
@@ -102,7 +103,7 @@ const Swiper = () => {
           onClick={rightButton}
           disabled={swiperLength === -(imagesList.length - quantity)}
         >
-          ADELANTE
+          <img src={ChevronRight} alt="ChevronRight" />
         </button>
       </div>
     </div>
