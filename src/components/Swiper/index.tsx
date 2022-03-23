@@ -17,27 +17,27 @@ const imagesList = [
   },
   {
     url: 'https://i.ibb.co/hmQB5Hj/aceite-distro.png',
-    title: 'Aceite distro dt-11',
+    title: 'Aceite distro dt-112',
   },
   {
     url: 'https://i.ibb.co/JH6B2ck/E524.png',
-    title: 'Antiflash G-144',
+    title: 'Antiflash G-1442',
   },
   {
     url: 'https://i.ibb.co/B2xJ5Mx/cinta-polyester.png',
-    title: 'Cintas polyester',
+    title: 'Cintas polyester2',
   },
   {
     url: 'https://i.ibb.co/hmQB5Hj/aceite-distro.png',
-    title: 'Aceite distro dt-11',
+    title: 'Aceite distro dt-113',
   },
   {
     url: 'https://i.ibb.co/JH6B2ck/E524.png',
-    title: 'Antiflash G-144',
+    title: 'Antiflash G-1443',
   },
   {
     url: 'https://i.ibb.co/B2xJ5Mx/cinta-polyester.png',
-    title: 'Cintas polyester',
+    title: 'Cintas polyester3',
   },
 ]
 
