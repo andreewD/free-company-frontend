@@ -11,12 +11,19 @@
     font-weight: 500;
     transition: 0.3s;
     cursor: pointer;
+  }
+
+  .textWhite {
+    color: white;
     &:hover {
       background: rgba(255, 255, 255, 0.3);
     }
   }
 
-  .textWhite {
-    color: white;
+  .textDark {
+    color: black;
+    &:hover {
+      background: rgba(173, 173, 173, 0.3);
+    }
   }
 }

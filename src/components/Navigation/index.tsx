@@ -1,22 +1,32 @@
+import { FC } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './Navigation.scss'
 
-const Navigation = () => {
+interface NavigationProps {
+  darkMode?: boolean
+}
+
+const Navigation: FC<NavigationProps> = (props) => {
+  const { darkMode } = props
   const navigate = useNavigate()
 
   return (
     <nav className="navigationContainer">
       <button
-        className={`buttonNavigation textWhite`}
+        className={`buttonNavigation ${darkMode ? 'textDark' : 'textWhite'}`}
         onClick={() => {
           navigate('/products')
         }}
       >
         Productos
       </button>
-      <button className={`buttonNavigation textWhite`}>Empresa</button>
       <button
-        className={`buttonNavigation textWhite`}
+        className={`buttonNavigation ${darkMode ? 'textDark' : 'textWhite'}`}
+      >
+        Empresa
+      </button>
+      <button
+        className={`buttonNavigation ${darkMode ? 'textDark' : 'textWhite'}`}
         onClick={() => {
           navigate('/contact-us')
         }}
@@ -27,4 +37,7 @@ const Navigation = () => {
   )
 }
 
+Navigation.defaultProps = {
+  darkMode: false,
+}
 export default Navigation

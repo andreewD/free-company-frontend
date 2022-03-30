@@ -1,0 +1,27 @@
+.bodyListFilters {
+  min-width: 17.5rem;
+  .labelFilter {
+    margin: 1rem;
+    font-size: 1.25rem;
+  }
+
+  .listFilterContainer {
+    margin: 1rem 0 0 !important;
+    & > * {
+      border-radius: 1rem !important;
+      background-color: white;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+  }
+  .titleFilter {
+    * {
+      font-size: 20px !important;
+    }
+  }
+}
+
+// .labelListFilters {
+//   background-color: #f4f4f4;
+//   font-size: 1rem;
+// }

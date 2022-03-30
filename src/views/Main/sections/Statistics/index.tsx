@@ -5,10 +5,10 @@ import './styles.scss'
 const Statistics = () => {
   const [showAnimation, setShowAnimation] = useState(false)
   const ref: MutableRefObject<any> = useRef()
-  let { visibleFractionY  } = useIntersectionRevealer(ref)
+  let { visibleFractionY } = useIntersectionRevealer(ref)
   const showCounter = () => {
-    if(!showAnimation){
-      if (visibleFractionY ) {
+    if (!showAnimation) {
+      if (visibleFractionY) {
         setShowAnimation(true)
       }
     }
@@ -19,19 +19,19 @@ const Statistics = () => {
   return (
     <section className="statisticsContainer">
       <div className="statisticsBackground" ref={ref}>
-        <div>
+        <div data-aos="fade-up">
           <h2>
             <b className={`${showAnimation ? 'clientsAnimation' : ''}`}></b>+
           </h2>
           <p>clientes satisfechos por nuestra atención</p>
         </div>
-        <div>
+        <div data-aos="fade-up">
           <h2>
             <b className={`${showAnimation ? 'experienceAnimation' : ''}`}></b>
           </h2>
           <p>años de experiencia en el mercado</p>
         </div>
-        <div>
+        <div data-aos="fade-up">
           <h2>
             <b className={`${showAnimation ? 'productsAnimation' : ''}`}></b>
           </h2>
