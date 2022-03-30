@@ -1,3 +1,21 @@
+@property --clientsNumber {
+  syntax: '<integer>';
+  initial-value: 100;
+  inherits: false;
+}
+
+@property --experienceNumber {
+  syntax: '<integer>';
+  initial-value: 25;
+  inherits: false;
+}
+
+@property --productsNumber {
+  syntax: '<integer>';
+  initial-value: 200;
+  inherits: false;
+}
+
 .statisticsContainer {
   height: 100vh;
   width: 100%;
@@ -18,6 +36,9 @@
     & > div {
       h2 {
         font-size: 4rem;
+        * {
+          font-size: 4rem;
+        }
       }
       p {
         font-size: 1.75rem;
@@ -25,5 +46,68 @@
         font-weight: 600;
       }
     }
+  }
+}
+
+.clientsAnimation {
+  animation-name: counterClients;
+  animation-duration: .5s;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  counter-reset: clientsNumber var(--clientsNumber);
+}
+.clientsAnimation::after {
+  content: counter(clientsNumber);
+}
+
+@keyframes counterClients {
+  from {
+    --clientsNumber: 0;
+  }
+  to {
+    --clientsNumber: 100;
+  }
+}
+
+.experienceAnimation {
+  animation-name: counterExp;
+  animation-duration: .5s;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  counter-reset: experienceNumber var(--experienceNumber);
+}
+.experienceAnimation::after {
+  content: counter(experienceNumber);
+}
+
+@keyframes counterExp {
+  from {
+    --experienceNumber: 0;
+  }
+  to {
+    --experienceNumber: 25;
+  }
+}
+
+.productsAnimation {
+  animation-name: counterProducts;
+  animation-duration: .5s;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  counter-reset: productsNumber var(--productsNumber);
+}
+.productsAnimation::after {
+  content: counter(productsNumber);
+}
+
+@keyframes counterProducts {
+  from {
+    --productsNumber: 0;
+  }
+  to {
+    --productsNumber: 200;
   }
 }
