@@ -2,7 +2,7 @@ import { Button, Input, Select, Textarea } from 'components'
 import './styles.scss'
 
 const Contact = () => {
-  const submitForm = (e: any) => {
+  const submitForm = (e: { preventDefault(): void }) => {
     e.preventDefault()
     alert('Aún estamos trabajando')
   }
@@ -63,12 +63,12 @@ const Contact = () => {
           <div style={{ gridArea: 'space2' }} className="space2"></div>
           <div style={{ gridArea: 'space3' }} className="space3"></div>
           <Select area="contactType" />
-          <Input area="fullName" />
-          <Input area="documentType" />
-          <Input area="socialReason" />
+          <Input label="Nombres" area="fullName" />
+          <Input label="Tipo de Documento" area="documentType" />
+          <Input label="Razón Social" area="socialReason" />
           <Select area="phoneType" />
-          <Input area="phoneNumber" />
-          <Input area="email" />
+          <Input label="Número" area="phoneNumber" />
+          <Input label="Email" area="email" />
           <Textarea area="description" />
         </div>
         <p className="notice">
@@ -78,7 +78,7 @@ const Contact = () => {
           fundamental de las personas a la protección de su privacidad.
         </p>
         <div className="submitButtonContainer">
-          <Button type="submit" onClick={submitForm} />
+          <Button label="ENVIAR MENSAJE" type="submit" onClick={submitForm} />
         </div>
       </form>
     </section>
