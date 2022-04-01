@@ -1,4 +1,3 @@
-import ListSubheader from '@mui/material/ListSubheader'
 import List from '@mui/material/List'
 import ListItemButton from '@mui/material/ListItemButton'
 import ListItemText from '@mui/material/ListItemText'
@@ -6,6 +5,7 @@ import Collapse from '@mui/material/Collapse'
 import ExpandLess from '@mui/icons-material/ExpandLess'
 import ExpandMore from '@mui/icons-material/ExpandMore'
 import { FC, useState } from 'react'
+import CheckBox from './../CheckBox'
 import './styles.scss'
 
 interface FilterProps {
@@ -33,11 +33,18 @@ const Filter: FC<FilterProps> = (props) => {
             <ListItemText className="titleFilter" primary={title} />
             {open ? <ExpandLess /> : <ExpandMore />}
           </ListItemButton>
-          <Collapse in={open} timeout="auto" unmountOnExit>
+          <Collapse className="adrrrr" in={open} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
-              <ListItemButton sx={{ pl: 4 }}>
-                <ListItemText primary="Starred" />
-              </ListItemButton>
+              <CheckBox />
+            </List>
+            <List component="div" disablePadding>
+              <CheckBox />
+            </List>
+            <List component="div" disablePadding>
+              <CheckBox />
+            </List>
+            <List component="div" disablePadding>
+              <CheckBox />
             </List>
           </Collapse>
         </List>

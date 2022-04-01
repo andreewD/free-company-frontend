@@ -3,15 +3,19 @@ import './styles.scss'
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   type?: 'submit' | 'button'
-  buttonType?: string
-  label: string
+  buttonType?: 'primary' | 'secondary' | 'outline'
+  children: JSX.Element
 }
 
 const Button: FC<ButtonProps> = (props) => {
-  const { type, label, buttonType, ...rest } = props
+  const { type, children, buttonType, ...rest } = props
   return (
-    <button type={props.type} {...rest} className="primary">
-      ENVIAR MENSAJE
+    <button
+      type={props.type}
+      {...rest}
+      className={`buttonStyles ${buttonType}`}
+    >
+      {children}
     </button>
   )
 }

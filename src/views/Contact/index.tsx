@@ -78,7 +78,9 @@ const Contact = () => {
           fundamental de las personas a la protección de su privacidad.
         </p>
         <div className="submitButtonContainer">
-          <Button label="ENVIAR MENSAJE" type="submit" onClick={submitForm} />
+          <Button type="submit" onClick={submitForm}>
+            <p>ENVIAR MENSAJE</p>
+          </Button>
         </div>
       </form>
     </section>
