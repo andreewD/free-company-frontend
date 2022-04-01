@@ -1,0 +1,65 @@
+.cardComponent {
+  background-color: white;
+  border-radius: 12px;
+  padding: 2rem;
+  height: 35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  max-width: 500px;
+  &:hover {
+    .buttonsCardContainer {
+      display: grid;
+    }
+  }
+  // width: 33%;
+  .descriptionCardContainer {
+    * {
+      font-weight: 700;
+    }
+    h3 {
+      font-size: 24px;
+    }
+    h4 {
+      font-size: 20px;
+    }
+    h5 {
+      font-size: 16px;
+    }
+  }
+  .imagesCardContainer {
+    width: 100%;
+    height: 18rem;
+    overflow: hidden;
+    & > * {
+      width: 100%;
+      height: 100%;
+    }
+    .image {
+      height: 18rem !important;
+      padding: 2rem 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img {
+        height: 100%;
+      }
+    }
+  }
+  .buttonsCardContainer {
+    display: none;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+}
+
+.arrowCardContainer {
+  background-color: #7F7F7F;
+  padding: 8px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  * {
+    fill: white;
+  }
+}

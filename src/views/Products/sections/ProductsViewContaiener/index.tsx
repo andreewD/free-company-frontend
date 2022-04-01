@@ -1,5 +1,6 @@
-import { Filter } from 'components'
+import { Card, Filter } from 'components'
 import './styles.scss'
+import Pagination from '@mui/material/Pagination'
 
 const ProductsViewContaiener = () => {
   return (
@@ -11,7 +12,12 @@ const ProductsViewContaiener = () => {
         </div>
         <div className="filterByCategory"></div>
       </div>
-      <div className="productsListContainer"></div>
+      <div className="productsListContainer">
+        <div className="cardsList">
+          <Card />
+        </div>
+        <Pagination count={10} color="primary" />
+      </div>
     </section>
   )
 }

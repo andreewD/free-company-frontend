@@ -1,4 +1,4 @@
-import { Contact, Main, Products } from 'views'
+import { Contact, Main, ProductInformation, Products } from 'views'
 
 export default [
   {
@@ -10,6 +10,11 @@ export default [
     path: '/products',
     exact: true,
     component: <Products />,
+  },
+  {
+    path: '/products/idProduct',
+    exact: true,
+    component: <ProductInformation />,
   },
   {
     path: '/contact-us',
