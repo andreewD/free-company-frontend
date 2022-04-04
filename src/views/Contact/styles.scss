@@ -5,7 +5,7 @@
   padding: 5rem 0 4rem;
   gap: 3rem;
   .informationContainer {
-    width: 100%px;
+    width: 100%;
     max-width: 1200px;
     display: flex;
     flex-direction: column;
@@ -44,7 +44,7 @@
     display: flex;
     gap: 2rem;
     flex-direction: column;
-    align-items: start;
+    align-items: flex-start;
     width: 100%;
     max-width: 1200px;
 
@@ -77,17 +77,17 @@
         'phoneType space3 description description'
         ' phoneNumber email description description';
     }
-    .notice{
+    .notice {
       font-size: 1rem;
     }
-    .submitButtonContainer{
+    .submitButtonContainer {
       display: flex;
-      justify-content: end;
-      button{
+      justify-content: flex-end;
+      button {
         cursor: pointer;
       }
     }
-    .space1{
+    .space1 {
       height: auto;
       width: auto;
     }

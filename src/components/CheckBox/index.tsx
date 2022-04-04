@@ -17,8 +17,7 @@ const CheckBox = () => {
     })
   }
 
-  const { gilad, jason, antoine } = state
-  const error = [gilad, jason, antoine].filter((v) => v).length !== 2
+  const { gilad } = state
   return (
     <FormControlLabel
       className='backgroundCheck'
