@@ -19,19 +19,19 @@ const Statistics = () => {
   return (
     <section className="statisticsContainer">
       <div className="statisticsBackground" ref={ref}>
-        <div data-aos="fade-up">
+        <div>
           <h2>
             <b className={`${showAnimation ? 'clientsAnimation' : ''}`}></b>+
           </h2>
           <p>clientes satisfechos por nuestra atención</p>
         </div>
-        <div data-aos="fade-up">
+        <div>
           <h2>
             <b className={`${showAnimation ? 'experienceAnimation' : ''}`}></b>
           </h2>
           <p>años de experiencia en el mercado</p>
         </div>
-        <div data-aos="fade-up">
+        <div>
           <h2>
             <b className={`${showAnimation ? 'productsAnimation' : ''}`}></b>
           </h2>
