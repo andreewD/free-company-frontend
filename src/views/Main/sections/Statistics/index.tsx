@@ -1,4 +1,4 @@
-import { MutableRefObject, useEffect, useRef, useState } from 'react'
+import { MutableRefObject, useRef, useState } from 'react'
 import { useIntersectionRevealer } from 'react-intersection-revealer'
 import './styles.scss'
 
