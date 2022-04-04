@@ -5,9 +5,9 @@ import 'react-slideshow-image/dist/styles.css'
 import { useEffect } from 'react'
 
 const App = () => {
-  useEffect(() => {
-    AOS.init()
-  }, [])
+  // useEffect(() => {
+  //   AOS.init()
+  // }, [])
   return <Root />
 }
 
