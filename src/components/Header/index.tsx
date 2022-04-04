@@ -32,10 +32,10 @@ const Header = () => {
       </div>
       <Navigation darkMode={isDark} />
       <div className="socialButton">
-        <a>
+        <a href="https://www.facebook.com/" target="_blank">
           <img src={isDark ? FacebookB : FacebookW} alt="facebook" />
         </a>
-        <a>
+        <a href="https://www.facebook.com/" target="_blank">
           <img src={isDark ? LinkedinB : LinkedinW} alt="linkedin" />
         </a>
       </div>
