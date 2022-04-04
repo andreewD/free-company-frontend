@@ -1,6 +1,6 @@
 import { Contact, Main, ProductInformation, Products } from 'views'
 
-export const routes = [
+const routes = [
   {
     path: '/',
     exact: true,
@@ -22,3 +22,5 @@ export const routes = [
     component: <Contact />,
   },
 ]
+
+export default routes

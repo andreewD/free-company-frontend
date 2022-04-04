@@ -18,7 +18,7 @@ const Header = () => {
   const [isDark, setIsDark] = useState(false)
   useEffect(() => {
     let path = pathname.slice(1)
-    setIsDark(path != '')
+    setIsDark(path !== '')
     console.log()
   }, [pathname])
   return (
