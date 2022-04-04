@@ -1,6 +1,6 @@
 import { Contact, Main, ProductInformation, Products } from 'views'
 
-export default [
+export const routes = [
   {
     path: '/',
     exact: true,
