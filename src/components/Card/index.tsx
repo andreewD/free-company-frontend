@@ -5,12 +5,8 @@ import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded'
 import WhatsAppIcon from '@mui/icons-material/WhatsApp'
 import './styles.scss'
 import { useNavigate } from 'react-router-dom'
-
-const slideImages = [
-  'https://i.ibb.co/4PQtCpf/aceite-distro-2.png',
-  'https://i.ibb.co/GJf5t25/Mask-group-1.png',
-  'https://i.ibb.co/wSGms9X/Mask-group.png',
-]
+import { FC } from 'react'
+import { Product } from 'models/products'
 
 const properties = {
   duration: 5000,
@@ -28,30 +24,29 @@ const properties = {
   ),
 }
 
-
-
-const Card = () => {
-  const navigate =useNavigate()
+const Card: FC<Product> = (props) => {
+  const navigate = useNavigate()
   const goToWhatsapp = () => {
     alert('Go to WHATSAPP')
   }
-  
-  const goToProductInformation = () => {
-    navigate('/products/idProduct')
+
+  const goToProductInformation = (productID: string) => {
+    navigate(`/products/${productID}`)
   }
+
   return (
     <div className="cardComponent">
       <div className="descriptionCardContainer">
-        <h3>Aceite Dieléctrico</h3>
-        <h4>Distro DT-11</h4>
-        <h5>NYNAS</h5>
+        <h3>{props.names}</h3>
+        <h4>{props.details1}</h4>
+        <h5>{props.brand}</h5>
       </div>
       <div className="imagesCardContainer">
         <Slide {...properties}>
-          {slideImages.map((each, index) => (
+          {props.images.map((url, index) => (
             <div key={index} className="each-slide">
               <div className="image">
-                <img src={each} alt={`${index}`} />
+                <img src={url} alt={`${index}`} />
               </div>
             </div>
           ))}
@@ -70,7 +65,10 @@ const Card = () => {
             <WhatsAppIcon /> CONSULTAR
           </p>
         </Button>
-        <Button buttonType="outline" onClick={goToProductInformation}>
+        <Button
+          buttonType="outline"
+          onClick={() => goToProductInformation(props.id)}
+        >
           <p>VER PRODUCTO</p>
         </Button>
       </div>
