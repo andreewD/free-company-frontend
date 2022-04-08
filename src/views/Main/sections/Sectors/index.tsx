@@ -3,13 +3,13 @@ import './styles.scss'
 const Sectors = () => {
   return (
     <section className="sectorsContainer">
-      <div className="sector-one">
+      <div data-aos="fade-up" className="sector-one">
         <button className="shadow-container">Fierro silicoso</button>
       </div>
-      <div className="sector-two">
+      <div data-aos="fade-right" className="sector-two">
         <button className="shadow-container">Ventiladores</button>
       </div>
-      <div className="sector-three">
+      <div data-aos="fade-left" className="sector-three">
         <button className="shadow-container">Alambre de cobre</button>
       </div>
     </section>

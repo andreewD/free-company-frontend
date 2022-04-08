@@ -1,4 +1,4 @@
-import { Card, Filter } from 'components'
+import { Card, Filter, Spinner } from 'components'
 import './styles.scss'
 import Pagination from '@mui/material/Pagination'
 import { FC, useEffect } from 'react'
@@ -10,9 +10,6 @@ interface ProductsViewProps {
 
 const ProductsViewContaiener: FC<ProductsViewProps> = (props) => {
   const { data } = props
-  useEffect(() => {
-    console.log(data)
-  }, [data])
   return (
     <section className="productsViewContaiener">
       <div className="filtersContainer">
@@ -30,7 +27,9 @@ const ProductsViewContaiener: FC<ProductsViewProps> = (props) => {
             })}
           </div>
         ) : (
-          <div>CARGANDO...</div>
+          <div className="spinnerProductsList">
+            <Spinner />
+          </div>
         )}
         <Pagination count={10} color="primary" />
       </div>

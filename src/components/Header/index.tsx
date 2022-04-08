@@ -14,10 +14,10 @@ import './Header.scss'
 const Header = () => {
   const navigate = useNavigate()
   const { pathname } = useLocation()
+  let path = pathname.slice(1)
 
   const [isDark, setIsDark] = useState(false)
   useEffect(() => {
-    let path = pathname.slice(1)
     setIsDark(path !== '')
     console.log()
   }, [pathname])
@@ -30,7 +30,7 @@ const Header = () => {
           <img className="darkLogo" src={ImcetronBlack} alt="logo" />
         )}
       </div>
-      <Navigation darkMode={isDark} />
+      <Navigation darkMode={isDark} path={path} />
       <div className="socialButton">
         <a href="https://www.facebook.com/" target="_blank">
           <img src={isDark ? FacebookB : FacebookW} alt="facebook" />
