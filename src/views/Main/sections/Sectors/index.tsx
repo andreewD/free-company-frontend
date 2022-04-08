@@ -6,10 +6,10 @@ const Sectors = () => {
       <div data-aos="fade-up" className="sector-one">
         <button className="shadow-container">Fierro silicoso</button>
       </div>
-      <div data-aos="fade-right" className="sector-two">
+      <div data-aos="fade-up" className="sector-two">
         <button className="shadow-container">Ventiladores</button>
       </div>
-      <div data-aos="fade-left" className="sector-three">
+      <div data-aos="fade-up" className="sector-three">
         <button className="shadow-container">Alambre de cobre</button>
       </div>
     </section>
