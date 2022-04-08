@@ -2,7 +2,7 @@ import WhatsAppIcon from '@mui/icons-material/WhatsApp'
 import ArrowForwardIosRoundedIcon from '@mui/icons-material/ArrowForwardIosRounded'
 import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded'
 import { Slide } from 'react-slideshow-image'
-import { Button } from 'components'
+import { Button, Spinner } from 'components'
 import './styles.scss'
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
@@ -37,58 +37,55 @@ const ProductsInformation = () => {
     const getProductByID = async () => {
       const response = await appService.getProductByID(productID || '')
       setData(response.message)
-      console.log(response.message)
     }
     getProductByID()
   }, [])
-  return (
+  return data ? (
     <main className="productInfoViewContainer">
-      {data ? (
-        <>
-          <div className="productInfoImages">
-            <Slide {...properties}>
-              {data.images.map((url, index) => (
-                <div key={index} className="each-slide">
-                  <div className="image">
-                    <img src={url} alt={`${index}`} />
-                  </div>
-                </div>
-              ))}
-            </Slide>
-          </div>
-          <div className="productInformation">
-            <div className="tagsInformation">
-              <h3>{data.names}</h3>
-              <h4>{data.details1}</h4>
-              <h5>{data.brand}</h5>
+      <div className="productInfoImages">
+        <Slide {...properties}>
+          {data.images.map((url, index) => (
+            <div key={index} className="each-slide">
+              <div className="image">
+                <img src={url} alt={`${index}`} />
+              </div>
             </div>
-            <div className="buttonsInformationContainer">
-              <Button onClick={goToWhatsapp}>
-                <p
-                  style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    gap: '10px',
-                  }}
-                >
-                  <WhatsAppIcon /> CONSULTAR
-                </p>
-              </Button>
-              <Button buttonType="secondary">
-                <p>FICHA TÉCNICA</p>
-              </Button>
-            </div>
-            <div className="descriptionInformationContainer">
-              <h5>Descripción</h5>
-              <p>{data.description}</p>
-            </div>
-          </div>
-        </>
-      ) : (
-        <div>Cargando ...</div>
-      )}
+          ))}
+        </Slide>
+      </div>
+      <div className="productInformation">
+        <div className="tagsInformation">
+          <h3>{data.names}</h3>
+          <h4>{data.details1}</h4>
+          <h5>{data.brand}</h5>
+        </div>
+        <div className="buttonsInformationContainer">
+          <Button onClick={goToWhatsapp}>
+            <p
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                gap: '10px',
+              }}
+            >
+              <WhatsAppIcon /> CONSULTAR
+            </p>
+          </Button>
+          <Button buttonType="secondary">
+            <p>FICHA TÉCNICA</p>
+          </Button>
+        </div>
+        <div className="descriptionInformationContainer">
+          <h5>Descripción</h5>
+          <p>{data.description}</p>
+        </div>
+      </div>
     </main>
+  ) : (
+    <div className="productSpinner">
+      <Spinner />
+    </div>
   )
 }
 

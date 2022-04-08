@@ -4,16 +4,19 @@ import './Navigation.scss'
 
 interface NavigationProps {
   darkMode?: boolean
+  path: string
 }
 
 const Navigation: FC<NavigationProps> = (props) => {
-  const { darkMode } = props
+  const { darkMode, path } = props
   const navigate = useNavigate()
 
   return (
     <nav className="navigationContainer">
       <button
-        className={`buttonNavigation ${darkMode ? 'textDark' : 'textWhite'}`}
+        className={`buttonNavigation ${darkMode ? 'textDark' : 'textWhite'} ${
+          path === 'products' ? 'buttonActive' : ''
+        }`}
         onClick={() => {
           navigate('/products')
         }}
@@ -26,7 +29,9 @@ const Navigation: FC<NavigationProps> = (props) => {
         Empresa
       </button>
       <button
-        className={`buttonNavigation ${darkMode ? 'textDark' : 'textWhite'}`}
+        className={`buttonNavigation ${darkMode ? 'textDark' : 'textWhite'} ${
+          path === 'contact-us' ? 'buttonActive' : ''
+        }`}
         onClick={() => {
           navigate('/contact-us')
         }}

@@ -56,8 +56,15 @@
       }
     }
   }
-}
 
+}
+.productSpinner{
+  width: 100%;
+  min-height: calc(100vh - 6.5rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .arrowInfoContainer {
   background-color: #eeeeee;
   padding: 8px 10px;
