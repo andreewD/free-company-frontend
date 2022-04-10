@@ -1,8 +1,41 @@
-import './styles.scss'
+import styled from 'styled-components'
+
+const StatisticsSection=styled.section`
+  height: 100vh;
+  width: 100%;
+  padding: 2rem;
+  .statisticsBackground {
+    width: 100%;
+    height: 100%;
+    padding: 2rem 5rem;
+    background: url(https://www.albertocuccodoro.it/images/146-22-industrial.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    color: white;
+    & > div {
+      h2 {
+        font-size: 4rem;
+        * {
+          font-size: 4rem;
+        }
+      }
+      p {
+        font-size: 1.75rem;
+        max-width: 320px;
+        font-weight: 600;
+      }
+    }
+  }
+`
 
 const Statistics = () => {
   return (
-    <section className="statisticsContainer">
+    <StatisticsSection className="statisticsContainer">
       <div className="statisticsBackground">
         <div>
           <h2 data-aos="fade-up">
@@ -23,7 +56,7 @@ const Statistics = () => {
           <p>productos importados y comercializados</p>
         </div>
       </div>
-    </section>
+    </StatisticsSection>
   )
 }
 

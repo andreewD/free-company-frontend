@@ -1,27 +1,106 @@
-import WhatsAppIcon from '@mui/icons-material/WhatsApp'
-import ArrowForwardIosRoundedIcon from '@mui/icons-material/ArrowForwardIosRounded'
-import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded'
+import styled from 'styled-components'
 import { Slide } from 'react-slideshow-image'
 import { Button, Spinner } from 'components'
-import './styles.scss'
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { AppService } from 'services'
 import { Product } from 'models/products'
+import {
+  LeftOutlined,
+  RightOutlined,
+  WhatsAppOutlined,
+} from '@ant-design/icons'
+
+const ProductView = styled.main`
+  background-color: white;
+  padding: 6rem 2rem 2rem !important;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+  .productInfoImages {
+    width: 100%;
+    height: calc(100vh - 6rem);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    & > * {
+      width: 100%;
+      height: 100%;
+    }
+    .image {
+      height: 500px;
+      padding: 2rem 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img {
+        height: 100%;
+      }
+    }
+  }
+  .productInformation {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    .tagsInformation {
+      h3 {
+        font-size: 2rem;
+      }
+      h4 {
+        font-size: 25px;
+      }
+      h5 {
+        font-size: 20px;
+        font-weight: 500;
+      }
+    }
+    .buttonsInformationContainer {
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+    }
+    .descriptionInformationContainer {
+      * {
+        font-size: 20px;
+      }
+      p {
+        font-weight: 400;
+      }
+    }
+  }
+`
+const ProductSpinner = styled.div`
+  width: 100%;
+  min-height: calc(100vh - 6.5rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+const ArrowInfoContainer = styled.div`
+  background-color: #eeeeee;
+  padding: 8px 10px;
+  border-radius: 5px;
+  border-radius: 100%;
+  cursor: pointer;
+  * {
+    fill: black;
+  }
+`
 
 const properties = {
   duration: 5000,
   transitionDuration: 500,
   infinite: false,
   prevArrow: (
-    <div className="arrowInfoContainer">
-      <ArrowBackIosRoundedIcon color="inherit" fontSize="small" />
-    </div>
+    <ArrowInfoContainer>
+      <LeftOutlined />
+    </ArrowInfoContainer>
   ),
   nextArrow: (
-    <div className="arrowInfoContainer">
-      <ArrowForwardIosRoundedIcon color="inherit" fontSize="small" />
-    </div>
+    <ArrowInfoContainer>
+      <RightOutlined />
+    </ArrowInfoContainer>
   ),
 }
 
@@ -41,7 +120,7 @@ const ProductsInformation = () => {
     getProductByID()
   }, [])
   return data ? (
-    <main className="productInfoViewContainer">
+    <ProductView className="productInfoViewContainer">
       <div className="productInfoImages">
         <Slide {...properties}>
           {data.images.map((url, index) => (
@@ -69,7 +148,7 @@ const ProductsInformation = () => {
                 gap: '10px',
               }}
             >
-              <WhatsAppIcon /> CONSULTAR
+              <WhatsAppOutlined /> CONSULTAR
             </p>
           </Button>
           <Button buttonType="secondary">
@@ -81,11 +160,11 @@ const ProductsInformation = () => {
           <p>{data.description}</p>
         </div>
       </div>
-    </main>
+    </ProductView>
   ) : (
-    <div className="productSpinner">
+    <ProductSpinner>
       <Spinner />
-    </div>
+    </ProductSpinner>
   )
 }
 

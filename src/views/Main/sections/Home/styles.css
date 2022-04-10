@@ -1,25 +1,23 @@
 .mainContainer {
   height: 100vh;
   width: 100%;
-  // background-position: center center;
-  // background-repeat: no-repeat;
-  // background-size: cover;
   position: relative;
   animation: changeBackground 25s linear infinite;
-  .arrowButton {
-    background: none;
-    border: none;
-    color: white;
-    position: absolute;
-    height: 12px;
-    left: 50%;
-    transform: translateX(-50%);
-    animation: flicker 1.5s linear infinite;
-    cursor: pointer;
-    img {
-      height: 100%;
-    }
-  }
+}
+
+.arrowButton {
+  background: none;
+  border: none;
+  color: white;
+  position: absolute;
+  height: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: flicker 1.5s linear infinite;
+  cursor: pointer;
+}
+.arrowButton img {
+  height: 100%;
 }
 
 @keyframes flicker {

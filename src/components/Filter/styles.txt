@@ -8,7 +8,7 @@
   .listFilterContainer {
     margin: 1rem 0 0 !important;
     & > * {
-      border-radius: 1rem ;
+      border-radius: 1rem;
       background-color: white;
       overflow: hidden;
       margin: 0 !important;
@@ -20,6 +20,21 @@
         }
       }
     }
+    .listFilter {
+      border-top: 1px solid rgb(215, 215, 215);
+      border-radius: 0px !important;
+      overflow: hidden;
+      & > * {
+        background: white;
+        padding: 1rem 0.5rem 1rem 1rem;
+        & > * {
+          border-radius: 1rem !important;
+        }
+        &:hover {
+          background: white;
+        }
+      }
+    }
   }
   .titleFilter {
     * {
@@ -27,24 +42,3 @@
     }
   }
 }
-
-.adrrrr {
-  border-top: 1px solid rgb(215, 215, 215);
-  border-radius: 0px !important;
-  overflow: hidden;
-  & > * {
-  background: white;
-  padding: 1rem .5rem 1rem 1rem;
-    & > * {
-      border-radius: 1rem !important;
-    }
-    &:hover {
-      background: white;
-    }
-  }
-}
-
-// .labelListFilters {
-//   background-color: #f4f4f4;
-//   font-size: 1rem;
-// }

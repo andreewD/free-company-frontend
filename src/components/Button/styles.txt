@@ -1,0 +1,23 @@
+.buttonStyles {
+  border-radius: 25px;
+  padding: 1rem 1.5rem;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  &.primary {
+    background-color: #0472fe;
+    color: white;
+    border: none;
+  }
+
+  &.outline {
+    background-color: transparent;
+    border: 2px solid black;
+    color: black;
+  }
+  &.secondary {
+    background-color: #373a3f;
+    color: white;
+    border: none;
+  }
+}

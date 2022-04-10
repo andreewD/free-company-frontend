@@ -1,32 +1,18 @@
-import './styles.scss'
-import Checkbox from '@mui/material/Checkbox'
-import { useState } from 'react'
-import { FormControlLabel } from '@mui/material'
+import styled from 'styled-components'
+import { Checkbox } from 'antd'
+
+const CustomCheckbox = styled(Checkbox)`
+  width: 100%;
+  font-size: 18px;
+  color: black;
+`
 
 const CheckBox = () => {
-  const [state, setState] = useState({
-    gilad: false,
-    jason: false,
-    antoine: false,
-  })
-
   const handleChange = (event: any) => {
-    setState({
-      ...state,
-      [event.target.name]: event.target.checked,
-    })
+    console.log('checked')
   }
 
-  const { gilad } = state
-  return (
-    <FormControlLabel
-      className='backgroundCheck'
-      control={
-        <Checkbox checked={gilad} onChange={handleChange} name="gilad" color='default' />
-      }
-      label="Filtro"
-    />
-  )
+  return <CustomCheckbox onChange={handleChange}>Checkbox</CustomCheckbox>
 }
 
 export default CheckBox

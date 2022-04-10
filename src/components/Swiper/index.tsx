@@ -1,6 +1,93 @@
+import styled from 'styled-components'
 import { useState } from 'react'
 import { ChevronLeft, ChevronRight } from 'assets'
-import './styles.scss'
+
+const CustomSwiper=styled.div`
+  padding: 1rem 0;
+  h2 {
+    margin: 2rem 3rem;
+    font-size: 18px;
+  }
+  .swiperComponent {
+    position: relative;
+    height: 60vh;
+    padding: 0 8.25rem;
+    button {
+      border: none;
+      background-color: whitesmoke;
+      height: 100%;
+      transition: 0.4s;
+      cursor: pointer;
+      &:hover {
+        background-color: rgb(233, 233, 233);
+      }
+    }
+    & > button {
+      position: absolute;
+      top: 0;
+      z-index: 1;
+      width: 100px;
+      img {
+        height: 1rem;
+        opacity: 0.5;
+        transition: 0.4s;
+      }
+      &:disabled {
+        cursor: not-allowed;
+        background-color: whitesmoke;
+        img {
+          opacity: 0.2;
+        }
+      }
+    }
+    .leftButton {
+      left: 0;
+    }
+    .rightButton {
+      right: 0;
+    }
+    .swiperContainer {
+      width: 100%;
+      overflow-x: hidden;
+      height: 100%;
+
+      .swiperList {
+        height: 100%;
+        display: grid;
+        gap: 2rem;
+        transition: 0.4s;
+        .productContainer {
+          height: 100%;
+          display: grid;
+          grid-template-columns: 1fr;
+          grid-template-rows: 80% 20%;
+          .imageContainer {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            overflow: hidden;
+            height: 100%;
+            padding: 1rem 0 0;
+            img {
+              height: 100%;
+            }
+          }
+          p {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-transform: uppercase;
+            color: black;
+            font-weight: 600;
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+  }
+`
 
 const imagesList = [
   {
@@ -54,7 +141,7 @@ const Swiper = () => {
   }
 
   return (
-    <div className="swiperComponentContainer">
+    <CustomSwiper className="swiperComponentContainer">
       <h2>PRODUCTOS DESTACADOS</h2>
       <div className="swiperComponent">
         <button
@@ -106,7 +193,7 @@ const Swiper = () => {
           <img src={ChevronRight} alt="ChevronRight" />
         </button>
       </div>
-    </div>
+    </CustomSwiper>
   )
 }
 

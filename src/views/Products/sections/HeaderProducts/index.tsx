@@ -1,12 +1,20 @@
+import styled from 'styled-components'
 import { Select } from 'components'
-import './styles.scss'
+
+const HeaderProductsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+`
 
 const HeaderProducts = () => {
   return (
-    <div className='headerProducts'>
+    <HeaderProductsContainer className="headerProducts">
       <h2>Catálogo de Productos</h2>
       <Select />
-    </div>
+    </HeaderProductsContainer>
   )
 }
 

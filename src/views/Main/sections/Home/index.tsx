@@ -1,5 +1,5 @@
 import { ArrowButton } from 'assets'
-import './styles.scss'
+import './styles.css'
 
 const Home = () => {
   const windowHeight = window.innerHeight

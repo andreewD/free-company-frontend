@@ -1,4 +1,5 @@
 import AppApi from "api"
+import 'antd/dist/antd.css';
 
 export const AppService = () => {
   const appApi = AppApi()

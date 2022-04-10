@@ -1,12 +1,78 @@
 import Button from 'components/Button'
 import { Slide } from 'react-slideshow-image'
-import ArrowForwardIosRoundedIcon from '@mui/icons-material/ArrowForwardIosRounded'
-import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded'
-import WhatsAppIcon from '@mui/icons-material/WhatsApp'
-import './styles.scss'
+import styled from 'styled-components'
 import { useNavigate } from 'react-router-dom'
 import { FC } from 'react'
 import { Product } from 'models/products'
+import {
+  LeftOutlined,
+  RightOutlined,
+  WhatsAppOutlined,
+} from '@ant-design/icons'
+
+const CustomCard = styled.div`
+  background-color: white;
+  border-radius: 12px;
+  padding: 2rem;
+  height: 35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  max-width: 500px;
+  &:hover {
+    .buttonsCardContainer {
+      display: grid;
+    }
+  }
+  .descriptionCardContainer {
+    * {
+      font-weight: 700;
+    }
+    h3 {
+      font-size: 24px;
+    }
+    h4 {
+      font-size: 20px;
+    }
+    h5 {
+      font-size: 16px;
+    }
+  }
+  .imagesCardContainer {
+    width: 100%;
+    height: 18rem;
+    overflow: hidden;
+    & > * {
+      width: 100%;
+      height: 100%;
+    }
+    .image {
+      height: 18rem !important;
+      padding: 2rem 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img {
+        height: 100%;
+      }
+    }
+  }
+  .buttonsCardContainer {
+    display: none;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .arrowCardContainer {
+    background-color: #7f7f7f;
+    padding: 8px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    * {
+      fill: white;
+    }
+  }
+`
 
 const properties = {
   duration: 5000,
@@ -14,12 +80,12 @@ const properties = {
   infinite: false,
   prevArrow: (
     <div className="arrowCardContainer">
-      <ArrowBackIosRoundedIcon color="inherit" fontSize="small" />
+      <LeftOutlined />
     </div>
   ),
   nextArrow: (
     <div className="arrowCardContainer">
-      <ArrowForwardIosRoundedIcon color="inherit" fontSize="small" />
+      <RightOutlined />
     </div>
   ),
 }
@@ -35,7 +101,7 @@ const Card: FC<Product> = (props) => {
   }
 
   return (
-    <div className="cardComponent">
+    <CustomCard className="cardComponent">
       <div className="descriptionCardContainer">
         <h3>{props.names}</h3>
         <h4>{props.details1}</h4>
@@ -62,7 +128,7 @@ const Card: FC<Product> = (props) => {
               gap: '10px',
             }}
           >
-            <WhatsAppIcon /> CONSULTAR
+            <WhatsAppOutlined /> CONSULTAR
           </p>
         </Button>
         <Button
@@ -72,7 +138,7 @@ const Card: FC<Product> = (props) => {
           <p>VER PRODUCTO</p>
         </Button>
       </div>
-    </div>
+    </CustomCard>
   )
 }
 
