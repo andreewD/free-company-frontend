@@ -1,11 +1,15 @@
 import { Swiper } from 'components'
-import './styles.scss'
+import styled from 'styled-components'
+
+const SwiperSection = styled.div`
+  width: 100%;
+`
 
 const FeaturedProducts = () => {
   return (
-    <div className='featuredProductsContainer'>
+    <SwiperSection className="featuredProductsContainer">
       <Swiper />
-    </div>
+    </SwiperSection>
   )
 }
 

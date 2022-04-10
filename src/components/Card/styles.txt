@@ -13,7 +13,6 @@
       display: grid;
     }
   }
-  // width: 33%;
   .descriptionCardContainer {
     * {
       font-weight: 700;
@@ -52,14 +51,15 @@
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
   }
-}
-
-.arrowCardContainer {
-  background-color: #7F7F7F;
-  padding: 8px 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  * {
-    fill: white;
+  .arrowCardContainer {
+    background-color: #7F7F7F;
+    padding: 8px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    * {
+      fill: white;
+    }
   }
 }
+
+

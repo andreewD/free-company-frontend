@@ -12,3 +12,13 @@ export interface Product {
   updatedAt: string,
   id: string,
 }
+
+
+export interface ProductBodyRequest {
+  args: {
+    brand: any,
+    category: string,
+    page: number,
+    size: number
+  }
+}

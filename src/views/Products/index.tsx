@@ -1,8 +1,14 @@
 import { Product } from 'models/products'
+import styled from 'styled-components'
 import { useEffect, useState } from 'react'
 import { AppService } from 'services'
 import { HeaderProducts, ProductsViewContaiener } from './sections'
-import './styles.scss'
+
+const ProductsListViewContainer = styled.main`
+  background-color: white;
+  padding: 6rem 0 2rem;
+  display: block;
+`
 
 const Products = () => {
   const appService = AppService()
@@ -10,16 +16,15 @@ const Products = () => {
   useEffect(() => {
     const getAllProducts = async () => {
       const { message } = await appService.getAllProducts()
-
-      setProducts(message)
+      setProducts(message.docs)
     }
     getAllProducts()
   }, [])
   return (
-    <main className="productsListViewContainer">
+    <ProductsListViewContainer className="productsListViewContainer">
       <HeaderProducts />
       <ProductsViewContaiener data={products} />
-    </main>
+    </ProductsListViewContainer>
   )
 }
 

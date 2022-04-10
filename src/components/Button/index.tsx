@@ -1,6 +1,29 @@
 import { ButtonHTMLAttributes, FC } from 'react'
-import './styles.scss'
+import styled from 'styled-components'
 
+const CustomButton=styled.button`
+  border-radius: 25px;
+  padding: 1rem 1.5rem;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  &.primary {
+    background-color: #0472fe;
+    color: white;
+    border: none;
+  }
+
+  &.outline {
+    background-color: transparent;
+    border: 2px solid black;
+    color: black;
+  }
+  &.secondary {
+    background-color: #373a3f;
+    color: white;
+    border: none;
+  }
+`
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   type?: 'submit' | 'button'
   buttonType?: 'primary' | 'secondary' | 'outline'
@@ -10,13 +33,13 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 const Button: FC<ButtonProps> = (props) => {
   const { type, children, buttonType, ...rest } = props
   return (
-    <button
+    <CustomButton
       type={props.type}
       {...rest}
       className={`buttonStyles ${buttonType}`}
     >
       {children}
-    </button>
+    </CustomButton>
   )
 }
 

@@ -1,4 +1,4 @@
-import './styles.scss'
+import styled from 'styled-components'
 
 const customersLogos = [
   {
@@ -55,9 +55,34 @@ const customersLogos = [
   },
 ]
 
+const CustomersSection = styled.section`
+  padding: 1rem 2rem;
+  .logoListContainer {
+    background-color: rgb(168, 168, 168);
+    padding: 1rem 3rem;
+    header {
+      margin: 2rem 0 3rem;
+      h3 {
+        font-size: 1.5rem;
+        color: white;
+        text-align: center;
+      }
+    }
+    main {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 3rem;
+      img {
+        height: 5rem;
+      }
+    }
+  }
+`
+
 const Customers = () => {
   return (
-    <section className="customersContainer">
+    <CustomersSection className="customersContainer">
       <div className="logoListContainer">
         <header>
           <h3>Ellos confían en nosotros</h3>
@@ -71,7 +96,7 @@ const Customers = () => {
           })}
         </main>
       </div>
-    </section>
+    </CustomersSection>
   )
 }
 
