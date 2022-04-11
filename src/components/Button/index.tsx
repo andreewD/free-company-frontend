@@ -1,9 +1,9 @@
 import { ButtonHTMLAttributes, FC } from 'react'
 import styled from 'styled-components'
 
-const CustomButton=styled.button`
-  border-radius: 25px;
-  padding: 1rem 1.5rem;
+const CustomButton = styled.button`
+  border-radius: 100px;
+  padding: 0.8rem 1.5rem 0.4rem;
   font-weight: 500;
   font-size: 1rem;
   cursor: pointer;

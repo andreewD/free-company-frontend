@@ -1,14 +1,16 @@
-import './styles.scss'
+import styled from 'styled-components'
 
+const CustomFooter = styled.footer`
+  text-align: center;
+  padding: 1.5rem;
+  color: #7e7e7e;
+  font-size: 1rem;
+`
 const Footer = () => {
-  const dateToday = new Date().getFullYear()
   return (
-    <footer className='generalFooter'>
-      <button>Imcetron &copy; {dateToday}</button>
-      <button>Productos</button>
-      <button>Empresa</button>
-      <button>Contacto</button>
-    </footer>
+    <CustomFooter className="generalFooter">
+      Imcetron &copy; 2022 | Todos los derechos resevados
+    </CustomFooter>
   )
 }
 
