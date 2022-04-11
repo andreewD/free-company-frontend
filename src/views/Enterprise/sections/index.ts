@@ -1,0 +1,5 @@
+export { default as Home } from './Home'
+export { default as AboutUs } from './AboutUs'
+export { default as History } from './History'
+export { default as Mision } from './Mision'
+export { default as Vision } from './Vision'

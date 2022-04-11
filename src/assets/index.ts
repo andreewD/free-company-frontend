@@ -2,7 +2,11 @@
 export { default as ImcetronWhite } from './img/imcetron-wh.png'
 export { default as ImcetronBlack } from './img/imcetron-bl.png'
 export { default as StatisticsBg } from './img/statistics-bg.png'
-
+export { default as MisionImg } from './img/mision_img.png'
+export { default as VisionImg } from './img/vision_img.png'
+export { default as EnterpriseImg } from './img/enterprise.png'
+export { default as ServicesImg } from './img/services.png'
+export { default as HistoryImg } from './img/history.png'
 // export svg
 export { default as FacebookW } from './svg/facebook-icon.svg'
 export { default as FacebookB } from './svg/facebook-icon-b.svg'

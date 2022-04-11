@@ -7,7 +7,7 @@ interface NavigationProps {
   path: string
 }
 
-const CustomNavigation=styled.nav`
+const CustomNavigation = styled.nav`
   display: flex;
   flex-direction: row;
   gap: 1rem;
@@ -57,10 +57,26 @@ const Navigation: FC<NavigationProps> = (props) => {
         Productos
       </button>
       <button
-        className={`buttonNavigation ${darkMode ? 'textDark' : 'textWhite'}`}
+        className={`buttonNavigation ${darkMode ? 'textDark' : 'textWhite'} ${
+          path === 'services' ? 'buttonActive' : ''
+        }`}
+        onClick={() => {
+          navigate('/services')
+        }}
+      >
+        Servicios
+      </button>
+      <button
+        className={`buttonNavigation ${darkMode ? 'textDark' : 'textWhite'} ${
+          path === 'enterprise' ? 'buttonActive' : ''
+        }`}
+        onClick={() => {
+          navigate('/enterprise')
+        }}
       >
         Empresa
       </button>
+
       <button
         className={`buttonNavigation ${darkMode ? 'textDark' : 'textWhite'} ${
           path === 'contact-us' ? 'buttonActive' : ''

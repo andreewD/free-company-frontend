@@ -100,7 +100,9 @@ const Header = () => {
 
   const [isDark, setIsDark] = useState(false)
   useEffect(() => {
-    setIsDark(path !== '')
+    console.log(pathname)
+    setIsDark(path !== '' && pathname !== '/enterprise')
+    console.log()
   }, [pathname])
   return (
     <CustomHeader className="headerContainer">

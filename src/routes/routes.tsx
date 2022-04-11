@@ -1,4 +1,11 @@
-import { Contact, Main, ProductInformation, Products } from 'views'
+import {
+  Contact,
+  Main,
+  ProductInformation,
+  Products,
+  Enterprise,
+  Services,
+} from 'views'
 
 const routes = [
   {
@@ -20,6 +27,16 @@ const routes = [
     path: '/contact-us',
     exact: true,
     component: <Contact />,
+  },
+  {
+    path: '/enterprise',
+    exact: true,
+    component: <Enterprise />,
+  },
+  {
+    path: '/services',
+    exact: true,
+    component: <Services />,
   },
 ]
 
