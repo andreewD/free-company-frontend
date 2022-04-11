@@ -1,20 +1,23 @@
 import { Pagination } from 'antd'
 import styled from 'styled-components'
-import { Card, Filter, Spinner } from 'components'
+import { Button, Card, Filter, Spinner } from 'components'
 import { FC } from 'react'
 import { Product } from 'models/products'
+import { FilterProps, PaginationProps } from 'models'
+import { CheckboxChangeEvent } from 'antd/lib/checkbox'
 
 const CustomProductsView = styled.section`
   padding: 2rem;
   width: 100%;
   background-color: #f4f4f4;
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 300px auto;
   gap: 3rem;
   .filterByBrand {
     display: flex;
     flex-direction: column;
     gap: 2.5rem;
+    width: 100%;
   }
   .productsListContainer {
     width: 100%;
@@ -29,15 +32,12 @@ const CustomProductsView = styled.section`
       grid-template-columns: 1fr 1fr 1fr;
       gap: 2rem;
     }
-    .spinnerProductsList {
-      width: 100%;
-      min-height: calc(100vh - 25rem);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+  }
+  .paginationContainer {
+    grid-area: 2 / 2 / span 1 / span 1;
   }
 `
+
 const PaginationContainer = styled.div`
   width: 100%;
   padding: 1rem;
@@ -45,7 +45,16 @@ const PaginationContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 1rem;
 `
+
+const SpinnerContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 65vh;
+`
+
 const CustomPagination = styled(Pagination)`
   & > * {
     margin: 0 !important;
@@ -86,43 +95,82 @@ const CustomPagination = styled(Pagination)`
   .ant-pagination-item-active {
     a {
       color: white;
-      background: #0378FB;
+      background: #0378fb;
       border-radius: 100%;
     }
   }
 `
-
 interface ProductsViewProps {
   data: Product[] | null
+  loading: boolean
+  categories: FilterProps[] | []
+  brands: FilterProps[] | []
+  pagination: PaginationProps
+  onChange?(e: CheckboxChangeEvent): void
+  applyFilters?(): void
+  loadingProducts: boolean
 }
 
 const ProductsViewContaiener: FC<ProductsViewProps> = (props) => {
-  const { data } = props
-  return (
+  const {
+    data,
+    loading,
+    categories,
+    brands,
+    pagination,
+    onChange,
+    applyFilters,
+    loadingProducts,
+  } = props
+
+  return loading ? (
+    <SpinnerContainer>
+      <Spinner />
+    </SpinnerContainer>
+  ) : (
     <CustomProductsView className="productsViewContaiener">
       <div className="filtersContainer">
         <div className="filterByBrand">
-          <Filter label="Marcas" title="- Seleccione marca -" />
-          <Filter label="Categorías" title="Todos los productos" />
+          <Filter
+            label="Marcas"
+            title="- Seleccione marca -"
+            options={brands}
+            name="brands"
+            onChange={onChange}
+          />
+          <Filter
+            label="Categorías"
+            title="Todos los productos"
+            options={categories}
+            name="categories"
+            onChange={onChange}
+          />
+          <Button onClick={applyFilters}>
+            <p>APLICAR</p>
+          </Button>
         </div>
         <div className="filterByCategory"></div>
       </div>
-      <div className="productsListContainer">
-        {data !== null ? (
+      {loadingProducts ? (
+        <SpinnerContainer style={{ height: '59vh' }}>
+          <Spinner />
+        </SpinnerContainer>
+      ) : (
+        <div className="productsListContainer">
           <div className="cardsList">
-            {data.map((e) => {
+            {data?.map((e) => {
               return <Card key={e.id} {...e} />
             })}
           </div>
-        ) : (
-          <div className="spinnerProductsList">
-            <Spinner />
-          </div>
-        )}
-        <PaginationContainer>
-          <CustomPagination defaultCurrent={1} total={50} />
-        </PaginationContainer>
-      </div>
+        </div>
+      )}
+      <PaginationContainer className="paginationContainer">
+        <CustomPagination
+          defaultCurrent={1}
+          defaultPageSize={12}
+          total={pagination.totalDocs}
+        />
+      </PaginationContainer>
     </CustomProductsView>
   )
 }

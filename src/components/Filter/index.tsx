@@ -2,9 +2,9 @@ import styled from 'styled-components'
 import { FC, useState } from 'react'
 import CheckBox from './../CheckBox'
 import { Menu } from 'antd'
+import { CheckboxChangeEvent } from 'antd/lib/checkbox'
 
 const CustomFilter = styled.div`
-  min-width: 17.5rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -15,6 +15,7 @@ const CustomFilter = styled.div`
   }
   ul {
     background: white !important;
+    width: auto !important;
   }
   .labelFilter {
     margin: 0 1.5rem;
@@ -44,18 +45,23 @@ const CustomMenu = styled.div`
     padding: 4px 8px;
   }
 `
-
+interface Option {
+  id: string
+  name: string
+}
 interface FilterProps {
   label: string
   title: string
+  options: Option[] | []
+  name: string
+  onChange?(e: CheckboxChangeEvent): void
 }
 
 const { SubMenu } = Menu
 
 const rootSubmenuKeys = ['sub1', 'sub2', 'sub4']
-
 const Filter: FC<FilterProps> = (props) => {
-  const { label, title } = props
+  const { label, title, options, name, onChange } = props
   const [openKeys, setOpenKeys] = useState(['sub1'])
 
   const onOpenChange = (keys: any) => {
@@ -66,6 +72,7 @@ const Filter: FC<FilterProps> = (props) => {
       setOpenKeys(latestOpenKey ? [latestOpenKey] : [])
     }
   }
+
   return (
     <CustomFilter>
       <label className="labelFilter">{label}</label>
@@ -76,16 +83,19 @@ const Filter: FC<FilterProps> = (props) => {
           onOpenChange={onOpenChange}
           style={{ width: 256 }}
         >
-          <SubMenu key="sub1" title="- Seleccione marca - ">
-            <Menu.Item key="1">
-              <CheckBox />
-            </Menu.Item>{' '}
-            <Menu.Item key="2">
-              <CheckBox />
-            </Menu.Item>{' '}
-            <Menu.Item key="3">
-              <CheckBox />
-            </Menu.Item>
+          <SubMenu key="sub1" title={title}>
+            {options.map((e) => {
+              return (
+                <Menu.Item key={e.id}>
+                  <CheckBox
+                    id={e.id}
+                    label={e.name}
+                    onChange={onChange}
+                    name={name}
+                  />
+                </Menu.Item>
+              )
+            })}
           </SubMenu>
         </Menu>
       </CustomMenu>

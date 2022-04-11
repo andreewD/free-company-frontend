@@ -22,3 +22,12 @@ export interface ProductBodyRequest {
     size: number
   }
 }
+
+export interface GetAllProductsArgs {
+  brand: string[] | [],
+  category: string[] | [],
+  page: number,
+  size: number
+}
+
+export type ProductsList = Product[] | []

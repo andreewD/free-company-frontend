@@ -1,19 +1,13 @@
 import axios, { AxiosRequestConfig } from 'axios'
 import { HEADERS } from 'global';
-import { ProductBodyRequest } from 'models/products';
 import { RequestConfig } from 'models/request';
-import { Response } from 'models/response'
 import { StatusCode } from 'models/status-code';
+import { GetAllProductsArgs } from 'models'
 
 const AppApi = () => {
-  const getAllProducts = async () => {
+  const getAllProducts = async (args: GetAllProductsArgs) => {
     const body: any = {
-      args: {
-        brand: null,
-        category: "Niveles de aceite",
-        page: 1,
-        size: 12
-      }
+      args: args
     }
 
     const config: AxiosRequestConfig<RequestConfig> = {
@@ -22,11 +16,10 @@ const AppApi = () => {
       headers: HEADERS,
       data: body
     };
-    
+
     const { status, data, request } = await axios(config)
-    console.log("\n\ndata")
-    console.log(data)
-    if (status == StatusCode.Ok) return data
+
+    if (status === StatusCode.Ok) return data
 
     const { errors } = request
     throw errors
@@ -40,15 +33,44 @@ const AppApi = () => {
     };
     const { status, data, request } = await axios(config)
 
-    if (status == StatusCode.Ok) return data
+    if (status === StatusCode.Ok) return data
 
     const { errors } = request
     throw errors
   }
 
+  const getAllCategories = async () => {
+    const config: AxiosRequestConfig<RequestConfig> = {
+      method: 'get',
+      url: `https://imcetron-backend-dev.herokuapp.com/api/categories`,
+      headers: HEADERS
+    };
+    const { status, data, request } = await axios(config)
+
+    if (status === StatusCode.Ok) return data
+
+    const { errors } = request
+    throw errors
+  }
+
+  const getAllBrands = async () => {
+    const config: AxiosRequestConfig<RequestConfig> = {
+      method: 'get',
+      url: `https://imcetron-backend-dev.herokuapp.com/api/brands`,
+      headers: HEADERS
+    };
+    const { status, data, request } = await axios(config)
+
+    if (status === StatusCode.Ok) return data
+
+    const { errors } = request
+    throw errors
+  }
   return {
     getAllProducts,
-    getProductByID
+    getProductByID,
+    getAllCategories,
+    getAllBrands
   }
 }
 
