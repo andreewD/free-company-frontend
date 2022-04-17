@@ -1,21 +1,22 @@
-import { FC } from 'react'
+import { FC, SelectHTMLAttributes } from 'react'
 import styled from 'styled-components'
 
 interface Option {
   id: string
   value: string
 }
-interface SelectProps {
+
+interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
   label?: string
   options?: Option[]
   area?: string
 }
 
-const CustomSelect=styled.div`
+const CustomSelect = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  label{
+  label {
     width: 100%;
     padding: 0 1.5rem;
     font-size: 1.3rem;
@@ -39,15 +40,15 @@ const CustomSelect=styled.div`
   }
 `
 
-const Select:FC<SelectProps> = (props) => {
+const Select: FC<SelectProps> = (props) => {
+  const { onChange } = props
   return (
     <CustomSelect style={{ gridArea: props.area || '' }}>
       {props.label && <label>Persona Natural</label>}
-      <select>
-        <option>Selecciona</option>
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
+      <select onChange={onChange}>
+        <option value={''}>Selecciona</option>
+        <option value={'asc'}>Nombre: Ordenar A - Z</option>
+        <option value={'desc'}>Nombre: Ordenar Z - A </option>
       </select>
     </CustomSelect>
   )

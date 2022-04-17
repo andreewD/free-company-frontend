@@ -1,12 +1,34 @@
 import styled from 'styled-components'
 import { FC, useState } from 'react'
-import CheckBox from './../CheckBox'
-import { Menu } from 'antd'
-import { CheckboxChangeEvent } from 'antd/lib/checkbox'
+import { Menu, Checkbox, Divider } from 'antd'
 
 const CustomFilter = styled.div`
   display: flex;
   flex-direction: column;
+  .ant-checkbox-inner {
+    background-color: white;
+    border-color: black !important;
+    &::after {
+      border-color: black;
+    }
+  }
+  .ant-checkbox-indeterminate{
+    .ant-checkbox-inner::after{
+      background-color: #585858 !important;
+    }
+  }
+  .ant-checkbox-checked {
+    border-color: black !important;
+    &::after {
+      border-color: black;
+    }
+  }
+
+  .ant-checkbox {
+    border-color: black !important;
+  }
+
+  }
   gap: 1rem;
   span {
     &:hover {
@@ -53,15 +75,21 @@ interface FilterProps {
   label: string
   title: string
   options: Option[] | []
-  name: string
-  onChange?(e: CheckboxChangeEvent): void
+  setFilter: any
 }
-
+const CheckboxGroup = Checkbox.Group
 const { SubMenu } = Menu
 
-const rootSubmenuKeys = ['sub1', 'sub2', 'sub4']
+const CustomCheckboxContent = styled.div`
+  padding: 1rem 24px;
+  * {
+    font-size: 20px;
+  }
+`
+
+const rootSubmenuKeys = ['sub1']
 const Filter: FC<FilterProps> = (props) => {
-  const { label, title, options, name, onChange } = props
+  const { label, title, setFilter, options } = props
   const [openKeys, setOpenKeys] = useState(['sub1'])
 
   const onOpenChange = (keys: any) => {
@@ -71,6 +99,27 @@ const Filter: FC<FilterProps> = (props) => {
     } else {
       setOpenKeys(latestOpenKey ? [latestOpenKey] : [])
     }
+  }
+  const plainOptions = options.map((e) => e.name)
+  const defaultCheckedList: any = []
+  const [checkedList, setCheckedList] = useState<string[] | []>(
+    defaultCheckedList
+  )
+  const [indeterminate, setIndeterminate] = useState(false)
+  const [checkAll, setCheckAll] = useState(false)
+
+  const onChanges = (list: any) => {
+    setCheckedList(list)
+    setFilter(list)
+    setIndeterminate(!!list.length && list.length < plainOptions.length)
+    setCheckAll(list.length === plainOptions.length)
+  }
+
+  const onCheckAllChange = (e: { target: { checked: boolean } }) => {
+    setCheckedList(e.target.checked ? plainOptions : [])
+    setFilter(e.target.checked ? plainOptions : [])
+    setIndeterminate(false)
+    setCheckAll(e.target.checked)
   }
 
   return (
@@ -84,18 +133,23 @@ const Filter: FC<FilterProps> = (props) => {
           style={{ width: 256 }}
         >
           <SubMenu key="sub1" title={title}>
-            {options.map((e) => {
-              return (
-                <Menu.Item key={e.id}>
-                  <CheckBox
-                    id={e.id}
-                    label={e.name}
-                    onChange={onChange}
-                    name={name}
-                  />
-                </Menu.Item>
-              )
-            })}
+            <CustomCheckboxContent>
+              <Checkbox
+                indeterminate={indeterminate}
+                onChange={onCheckAllChange}
+                checked={checkAll}
+              >
+                Seleccionar todos.
+              </Checkbox>
+              <Divider style={{ margin: '12px 0' }} />
+              <CheckboxGroup
+                options={plainOptions}
+                value={checkedList}
+                style={{ display: 'flex', flexDirection: 'column' }}
+                defaultValue={checkedList}
+                onChange={onChanges}
+              />
+            </CustomCheckboxContent>
           </SubMenu>
         </Menu>
       </CustomMenu>

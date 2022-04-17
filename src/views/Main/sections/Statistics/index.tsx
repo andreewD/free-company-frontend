@@ -8,7 +8,7 @@ const StatisticsSection=styled.section`
     width: 100%;
     height: 100%;
     padding: 2rem 5rem;
-    background: url(https://www.albertocuccodoro.it/images/146-22-industrial.jpg);
+    background: url('https://i.ibb.co/kgFkbSy/motor-winding-03-mod-2.png');
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -20,6 +20,7 @@ const StatisticsSection=styled.section`
     & > div {
       h2 {
         font-size: 4rem;
+        color: white;
         * {
           font-size: 4rem;
         }

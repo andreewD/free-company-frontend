@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { Select } from 'components'
+import { FC } from 'react'
 
 const HeaderProductsContainer = styled.div`
   display: flex;
@@ -8,12 +9,16 @@ const HeaderProductsContainer = styled.div`
   align-items: center;
   padding: 2rem;
 `
+interface HeaderProps {
+  onChange: React.ChangeEventHandler<HTMLSelectElement> | undefined
+}
 
-const HeaderProducts = () => {
+const HeaderProducts: FC<HeaderProps> = (props) => {
+  const { onChange } = props
   return (
     <HeaderProductsContainer className="headerProducts">
       <h2>Catálogo de Productos</h2>
-      <Select />
+      <Select onChange={onChange} />
     </HeaderProductsContainer>
   )
 }
