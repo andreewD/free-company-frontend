@@ -33,6 +33,9 @@ const MainContainer = styled('section')`
   width: 100%;
   position: relative;
   background-image: url(${ServicesImg});
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
 `
 
 function Home() {

@@ -1,0 +1,21 @@
+.Carousel .ant-carousel .slick-dots {
+  position: static;
+  margin-top: 20px;
+}
+.Carousel .ant-carousel .slick-dots li button {
+  height: 16px;
+  border-radius: 4px;
+  background-color: gray;
+}
+.Carousel__item {
+  padding: 0 10px;
+}
+.Carousel__image {
+  width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+.Carousel__text {
+  margin-top: 1em;
+  text-align: center;
+}

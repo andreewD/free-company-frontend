@@ -7,6 +7,8 @@ export { default as VisionImg } from './img/vision_img.png'
 export { default as EnterpriseImg } from './img/enterprise.png'
 export { default as ServicesImg } from './img/services.png'
 export { default as HistoryImg } from './img/history.png'
+export { default as ServicesFirstImage } from './img/servicesFirstImage.png'
+export { default as MaquinaTermoVacio } from './img/maquinaTermoVacio.png'
 // export svg
 export { default as FacebookW } from './svg/facebook-icon.svg'
 export { default as FacebookB } from './svg/facebook-icon-b.svg'

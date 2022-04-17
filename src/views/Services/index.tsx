@@ -1,10 +1,13 @@
 import React from 'react'
-import { Home } from './sections'
+import { Home, Maintenance, Equipments, EquipmentForMedition } from './sections'
 
 function Services() {
   return (
     <div>
       <Home />
+      <Maintenance />
+      <Equipments />
+      <EquipmentForMedition />
     </div>
   )
 }
