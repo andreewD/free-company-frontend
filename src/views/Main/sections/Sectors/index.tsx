@@ -9,7 +9,7 @@ const SectorSection=styled.section`
   grid-template-rows: 1fr 1fr;
   padding: 1rem 2rem;
   .sector-one {
-    background: url(https://blog.laminasyaceros.com/hubfs/silicio3.jpg);
+    background: url('https://i.ibb.co/bWZLQ5c/Imagen-20.png');
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -17,15 +17,13 @@ const SectorSection=styled.section`
     grid-column-end: 3;
   }
   .sector-two {
-    // background: url(../../../../assets/img/sector-2.png);
-    background: url(https://blog.laminasyaceros.com/hubfs/silicio3.jpg);
+    background: url('https://i.ibb.co/9478gcB/Imagen-22.png');
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
   }
   .sector-three {
-    // background: url(../../../../assets/img/sector-3.png);
-    background: url(https://blog.laminasyaceros.com/hubfs/silicio3.jpg);
+    background: url('https://i.ibb.co/Lr8XwBJ/Imagen-21.png');
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;

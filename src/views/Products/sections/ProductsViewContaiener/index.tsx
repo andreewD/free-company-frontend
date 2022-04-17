@@ -13,6 +13,7 @@ const CustomProductsView = styled.section`
   display: grid;
   grid-template-columns: 300px auto;
   gap: 3rem;
+  // min-height: 80vh;
   .filterByBrand {
     display: flex;
     flex-direction: column;
@@ -106,9 +107,10 @@ interface ProductsViewProps {
   categories: FilterProps[] | []
   brands: FilterProps[] | []
   pagination: PaginationProps
-  onChange?(e: CheckboxChangeEvent): void
   applyFilters?(): void
   loadingProducts: boolean
+  setBrandsList: any
+  setCategoriesList: any
 }
 
 const ProductsViewContaiener: FC<ProductsViewProps> = (props) => {
@@ -118,9 +120,10 @@ const ProductsViewContaiener: FC<ProductsViewProps> = (props) => {
     categories,
     brands,
     pagination,
-    onChange,
     applyFilters,
     loadingProducts,
+    setBrandsList,
+    setCategoriesList,
   } = props
 
   return loading ? (
@@ -135,15 +138,13 @@ const ProductsViewContaiener: FC<ProductsViewProps> = (props) => {
             label="Marcas"
             title="- Seleccione marca -"
             options={brands}
-            name="brands"
-            onChange={onChange}
+            setFilter={setBrandsList}
           />
           <Filter
             label="Categorías"
             title="Todos los productos"
             options={categories}
-            name="categories"
-            onChange={onChange}
+            setFilter={setCategoriesList}
           />
           <Button onClick={applyFilters}>
             <p>APLICAR</p>
@@ -155,13 +156,27 @@ const ProductsViewContaiener: FC<ProductsViewProps> = (props) => {
         <SpinnerContainer style={{ height: '59vh' }}>
           <Spinner />
         </SpinnerContainer>
-      ) : (
+      ) : data?.length !== 0 ? (
         <div className="productsListContainer">
           <div className="cardsList">
             {data?.map((e) => {
               return <Card key={e.id} {...e} />
             })}
           </div>
+        </div>
+      ) : (
+        <div
+          className="productsListContainer"
+          style={{
+            height: '50vh',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            fontSize: '24px',
+            fontWeight: 700,
+          }}
+        >
+          No se encontraron los productos
         </div>
       )}
       <PaginationContainer className="paginationContainer">

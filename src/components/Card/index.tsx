@@ -22,7 +22,11 @@ const CustomCard = styled.div`
   max-width: 500px;
   &:hover {
     .buttonsCardContainer {
-      display: grid;
+      opacity: 100%;
+    }
+    .arrowCardContainer {
+      display: block;
+      opacity: 100%;
     }
   }
   .descriptionCardContainer {
@@ -59,15 +63,19 @@ const CustomCard = styled.div`
     }
   }
   .buttonsCardContainer {
-    display: none;
+    transition: 0.4s;
+    opacity: 0;
+    display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
   }
   .arrowCardContainer {
+    transition: 0.4s;
     background-color: #7f7f7f;
     padding: 8px 10px;
     border-radius: 5px;
     cursor: pointer;
+    opacity: 0;
     * {
       fill: white;
     }
@@ -75,8 +83,8 @@ const CustomCard = styled.div`
 `
 
 const properties = {
-  duration: 5000,
-  transitionDuration: 500,
+  autoplay: false,
+  transitionDuration: 350,
   infinite: false,
   prevArrow: (
     <div className="arrowCardContainer">

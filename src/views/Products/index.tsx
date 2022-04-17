@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react'
 import { AppService } from 'services'
 import { HeaderProducts, ProductsViewContaiener } from './sections'
 import { Categories, PaginationProps, ProductsList } from 'models'
-import { CheckboxChangeEvent } from 'antd/lib/checkbox'
 import AppApi from 'api'
 import { message } from 'antd'
 
@@ -12,14 +11,6 @@ const ProductsListViewContainer = styled.main`
   padding: 6rem 0 2rem;
   display: block;
 `
-interface FilterParams {
-  brand: string[] | []
-  category: string[] | []
-  page: number
-  size: number
-}
-
-let filtersParamsArray: any = {}
 
 const Products = () => {
   const appService = AppService()
@@ -30,41 +21,23 @@ const Products = () => {
   const [pagination, setPagination] = useState<PaginationProps>({
     totalDocs: 0,
   })
-  // const [loadingProducts, setLoadingProducts] = useState(true)
-  const [filters, setFilters] = useState<FilterParams>({
-    brand: [],
-    category: [],
-    page: 1,
-    size: 12,
-  })
-  const handleChange = (event: CheckboxChangeEvent) => {
-    filtersParamsArray = {
-      ...filtersParamsArray,
-      [event.target.value]: {
-        checked: event.target.checked,
-        type: event.target.name,
-      },
-    }
-    let brandValues = []
-    let categoriesValues = []
-    let filterValues: any = Object.values(filtersParamsArray)
-    let filterKeys = Object.keys(filtersParamsArray)
-    let i = 0
-    for (i = 0; i < Object.keys(filtersParamsArray).length; i++) {
-      if (filterValues[i].checked) {
-        if (filterValues[i].type === 'brands') {
-          brandValues.push(filterKeys[i])
-        } else {
-          categoriesValues.push(filterKeys[i])
-        }
-      } else {
-      }
-    }
-    setFilters({ ...filters, brand: brandValues, category: categoriesValues })
+
+  const [orderFilter, setOrderFilter] = useState<string | null>(null)
+  const [brandsList, setBrandsList] = useState([])
+  const [categoriesList, setCategoriesList] = useState([])
+  const handleSelectChange = (e: { target: { value: string } }) => {
+    setOrderFilter(e.target.value === '' ? null : e.target.value)
   }
   const applyFilters = async () => {
     const appApi = AppApi()
     setLoadingProducts(true)
+    const filters = {
+      brand: brandsList,
+      category: categoriesList,
+      page: 1,
+      size: 12,
+      sort: orderFilter,
+    }
     try {
       const products = await appApi.getAllProducts(filters)
       setProducts(products.message.docs)
@@ -75,11 +48,19 @@ const Products = () => {
       message.error('Hubo un error en la carga de servicios')
     }
   }
+
   const [loading, setLoading] = useState(true)
   useEffect(() => {
     const getAllData = async () => {
       const categories = await appService.getAllCategories()
       const brands = await appService.getAllBrands()
+      const filters = {
+        brand: [],
+        category: [],
+        page: 1,
+        size: 12,
+        sort: null,
+      }
       const products = await appService.getAllProducts(filters)
       setCategories(categories.message)
       setBrands(brands.message)
@@ -91,17 +72,17 @@ const Products = () => {
   }, [])
   return (
     <ProductsListViewContainer className="productsListViewContainer">
-      <HeaderProducts />
+      <HeaderProducts onChange={handleSelectChange} />
       <ProductsViewContaiener
         data={products}
         loading={loading}
         categories={categories}
         brands={brands}
         pagination={pagination}
-        onChange={handleChange}
         applyFilters={applyFilters}
         loadingProducts={loadingProducts}
-        // loadingProducts={loadingProducts}
+        setBrandsList={setBrandsList}
+        setCategoriesList={setCategoriesList}
       />
     </ProductsListViewContainer>
   )
