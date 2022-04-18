@@ -9,17 +9,17 @@ import {
   RightOutlined,
   WhatsAppOutlined,
 } from '@ant-design/icons'
+import { device } from 'helpers/media-screen'
 
 const CustomCard = styled.div`
   background-color: white;
   border-radius: 12px;
   padding: 2rem;
-  height: 35rem;
+  height: 40rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
   width: 100%;
-  max-width: 500px;
   &:hover {
     .buttonsCardContainer {
       opacity: 100%;
@@ -45,11 +45,17 @@ const CustomCard = styled.div`
   }
   .imagesCardContainer {
     width: 100%;
-    height: 18rem;
+    height: 20rem !important;
     overflow: hidden;
-    & > * {
+    .contSliderAbsolute {
       width: 100%;
       height: 100%;
+      position: relative;
+      .contSliderRelative {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
     }
     .image {
       height: 18rem !important;
@@ -78,6 +84,11 @@ const CustomCard = styled.div`
     opacity: 0;
     * {
       fill: white;
+    }
+  }
+  @media ${device.mobile} {
+    .buttonsCardContainer {
+      grid-template-columns: 1fr;
     }
   }
 `
@@ -116,15 +127,19 @@ const Card: FC<Product> = (props) => {
         <h5>{props.brand}</h5>
       </div>
       <div className="imagesCardContainer">
-        <Slide {...properties}>
-          {props.images.map((url, index) => (
-            <div key={index} className="each-slide">
-              <div className="image">
-                <img src={url} alt={`${index}`} />
-              </div>
-            </div>
-          ))}
-        </Slide>
+        <div className="contSliderAbsolute">
+          <div className="contSliderRelative">
+            <Slide {...properties}>
+              {props.images.map((url, index) => (
+                <div key={index} className="each-slide">
+                  <div className="image">
+                    <img src={url} alt={`${index}`} />
+                  </div>
+                </div>
+              ))}
+            </Slide>
+          </div>
+        </div>
       </div>
       <div className="buttonsCardContainer">
         <Button onClick={goToWhatsapp}>
