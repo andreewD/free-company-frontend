@@ -5,6 +5,7 @@ import { FC } from 'react'
 import { Product } from 'models/products'
 import { FilterProps, PaginationProps } from 'models'
 import { CheckboxChangeEvent } from 'antd/lib/checkbox'
+import { device } from 'helpers/media-screen'
 
 const CustomProductsView = styled.section`
   padding: 2rem;
@@ -13,7 +14,14 @@ const CustomProductsView = styled.section`
   display: grid;
   grid-template-columns: 300px auto;
   gap: 3rem;
-  // min-height: 80vh;
+  .bntAplyContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & > * {
+      min-width: 180px;
+    }
+  }
   .filterByBrand {
     display: flex;
     flex-direction: column;
@@ -36,6 +44,36 @@ const CustomProductsView = styled.section`
   }
   .paginationContainer {
     grid-area: 2 / 2 / span 1 / span 1;
+  }
+  @media ${device.laptopL} {
+    .productsListContainer {
+      .cardsList {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  }
+
+  @media ${device.laptopM} {
+    grid-template-columns: 1fr;
+    .paginationContainer {
+      grid-area: 3 / 1 / span 1 / span 1;
+    }
+    // .filterByBrand {
+    //   display: grid;
+    //   grid-template-columns: 1fr 1fr;
+    //   gap: 2.5rem;
+    //   .bntAplyContainer {
+    //     grid-area: 2 / 1 / span 1 / span 2;
+    //   }
+    // }
+  }
+
+  @media ${device.laptopS} {
+    .productsListContainer {
+      .cardsList {
+        grid-template-columns: 1fr;
+      }
+    }
   }
 `
 
@@ -113,7 +151,7 @@ interface ProductsViewProps {
   setCategoriesList: any
 }
 
-const ProductsViewContaiener: FC<ProductsViewProps> = (props) => {
+const ProductsViewContainer: FC<ProductsViewProps> = (props) => {
   const {
     data,
     loading,
@@ -131,7 +169,7 @@ const ProductsViewContaiener: FC<ProductsViewProps> = (props) => {
       <Spinner />
     </SpinnerContainer>
   ) : (
-    <CustomProductsView className="productsViewContaiener">
+    <CustomProductsView className="productsViewContainer">
       <div className="filtersContainer">
         <div className="filterByBrand">
           <Filter
@@ -146,11 +184,12 @@ const ProductsViewContaiener: FC<ProductsViewProps> = (props) => {
             options={categories}
             setFilter={setCategoriesList}
           />
-          <Button onClick={applyFilters}>
-            <p>APLICAR</p>
-          </Button>
+          <div className="bntAplyContainer">
+            <Button onClick={applyFilters}>
+              <p>APLICAR</p>
+            </Button>
+          </div>
         </div>
-        <div className="filterByCategory"></div>
       </div>
       {loadingProducts ? (
         <SpinnerContainer style={{ height: '59vh' }}>
@@ -190,4 +229,4 @@ const ProductsViewContaiener: FC<ProductsViewProps> = (props) => {
   )
 }
 
-export default ProductsViewContaiener
+export default ProductsViewContainer
