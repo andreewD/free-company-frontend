@@ -108,8 +108,16 @@ const ProductsInformation = () => {
   const { productID } = useParams()
   const appService = AppService()
   const [data, setData] = useState<Product | null>(null)
-  const goToWhatsapp = () => {
-    alert('Go to WHATSAPP')
+
+  const openInNewTab = (url: string) => {
+    const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
+    if (newWindow) newWindow.opener = null
+  }
+
+  const goToWhatsapp = (data: any) => {
+    openInNewTab(
+      `https://wa.me/51959168186?text=Buenas!%20%20Estoy%20interesad@%20en%20el%20producto%20${data.names}%20de%20la%20marca%20${data.brand}`
+    )
   }
 
   useEffect(() => {
@@ -139,7 +147,7 @@ const ProductsInformation = () => {
           <h5>{data.brand}</h5>
         </div>
         <div className="buttonsInformationContainer">
-          <Button onClick={goToWhatsapp}>
+          <Button onClick={() => goToWhatsapp(data)}>
             <p
               style={{
                 display: 'flex',
