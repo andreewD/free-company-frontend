@@ -1,13 +1,16 @@
 import { FC, InputHTMLAttributes } from 'react'
 import styled from 'styled-components'
+import { Input, Form } from 'antd'
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string
   type?: 'number' | 'string'
   area: string
+  message: string
+  name: string
 }
 
-const CustomInput = styled.div`
+const CustomContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -17,42 +20,36 @@ const CustomInput = styled.div`
     font-size: 1.3rem;
     font-weight: 600;
   }
-  input {
-    width: 100%;
-    padding: 1rem 1.5rem;
-    border: 0;
-    cursor: pointer;
-    background-color: #f4f4f4;
-    border-radius: 30px;
-    font-size: 1.25rem;
-    font-weight: 600;
-    transition: 0.3s;
-    &:hover {
-      background-color: #f0f0f0;
-    }
-  }
-  .requiredText {
-    text-align: right;
-    padding: 0 1.5rem;
-    color: red;
+`
+
+const CustomInput = styled(Input)`
+  width: 100%;
+  padding: 1rem 1.5rem;
+  border: 0;
+  cursor: pointer;
+  background-color: #e5e5e5;
+  border-radius: 30px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  transition: 0.3s;
+  // &:hover {
+  //   background-color: #f0f0f0;
+  // }
+  &:focus {
+    background-color: #f0f0f0;
   }
 `
 
-const Input: FC<InputProps> = (props) => {
-  const { label, type, area, ...rest } = props
+const FormInput: FC<InputProps> = (props) => {
+  const { label, type, area, message, name } = props
   return (
-    <CustomInput style={{ gridArea: props.area || '' }} className="inputContainer">
+    <CustomContainer style={{ gridArea: area }}>
       <label>{label}</label>
-      <input {...rest} />
-      <div style={{ display: 'none' }} className="requiredText">
-        Dato inválido
-      </div>
-    </CustomInput>
+      <Form.Item name={name} rules={[{ required: true, message: message }]}>
+        <CustomInput />
+      </Form.Item>
+    </CustomContainer>
   )
 }
 
-Input.defaultProps = {
-  type: 'string',
-}
-
-export default Input
+export default FormInput

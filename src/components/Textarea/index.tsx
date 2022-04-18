@@ -1,6 +1,16 @@
+import { Form } from 'antd'
+import { FC, InputHTMLAttributes } from 'react'
 import styled from 'styled-components'
 
-const TextareaComponent=styled.div`
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  label: string
+  type?: 'number' | 'string'
+  area: string
+  message: string
+  name: string
+}
+
+const CustomContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -12,11 +22,11 @@ const TextareaComponent=styled.div`
   }
   textarea {
     width: 100%;
-    height: 100%;
+    height: 25vh;
     padding: 1rem 1.5rem;
     border: 0;
     cursor: pointer;
-    background-color: #f4f4f4;
+    background-color: #e5e5e5;
     border-radius: 30px;
     font-size: 1.25rem;
     font-weight: 600;
@@ -25,21 +35,18 @@ const TextareaComponent=styled.div`
       background-color: #f0f0f0;
     }
   }
-  .requiredText {
-    text-align: right;
-    padding: 0 1.5rem;
-    color: red;
-  }
 `
-const Textarea = (props: any) => {
+
+const Textarea: FC<InputProps> = (props: any) => {
+  const { label, type, area, message, name } = props
   return (
-    <TextareaComponent style={{ gridArea: props.area || '' }} className="textareaContainer">
-      <label>Lorem Ipsum</label>
-      <textarea />
-      <div style={{ display: 'none' }} className="requiredText">
-        Dato inválido
-      </div>
-    </TextareaComponent>
+    <CustomContainer style={{ gridArea: area }}>
+      <label>{label}</label>
+
+      <Form.Item name={name} rules={[{ required: true, message: message }]}>
+        <textarea />
+      </Form.Item>
+    </CustomContainer>
   )
 }
 
