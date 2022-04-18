@@ -7,6 +7,7 @@ import {
   LinkedinW,
 } from 'assets'
 import Navigation from 'components/Navigation'
+import { device } from 'helpers/media-screen'
 import { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
@@ -36,7 +37,7 @@ const CustomHeader = styled.header`
   }
 
   .socialButton {
-    display: flex !important;
+    display: flex;
     flex-direction: row;
     gap: 0.5rem;
 
@@ -46,6 +47,12 @@ const CustomHeader = styled.header`
       img {
         height: 100%;
       }
+    }
+  }
+
+  @media ${device.tablet} {
+    .socialButton {
+      display: none;
     }
   }
   @keyframes changeWhiteLogo {
