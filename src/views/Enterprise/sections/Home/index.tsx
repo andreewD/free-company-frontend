@@ -32,6 +32,9 @@ const MainContainer = styled('section')`
   width: 100%;
   position: relative;
   background-image: url(${EnterpriseImg});
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
 `
 
 function Home() {
