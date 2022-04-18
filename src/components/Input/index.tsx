@@ -32,9 +32,6 @@ const CustomInput = styled(Input)`
   font-size: 1.25rem;
   font-weight: 600;
   transition: 0.3s;
-  // &:hover {
-  //   background-color: #f0f0f0;
-  // }
   &:focus {
     background-color: #f0f0f0;
   }

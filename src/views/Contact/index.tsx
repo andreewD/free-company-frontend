@@ -1,7 +1,8 @@
 import styled from 'styled-components'
-import { FormInput, FormTextarea } from 'components'
+import { FormInput, FormTextarea, Spinner } from 'components'
 import { Form, Button, message } from 'antd'
-import axios from 'axios'
+import emailjs from '@emailjs/browser'
+import { useState } from 'react'
 
 const ContactSection = styled.section`
   display: flex;
@@ -23,8 +24,8 @@ const CustomForm = styled(Form)`
     margin: 1rem 0 2rem;
     grid-template-areas:
       'contactType space1 space2 space2'
-      'fullName documentType socialReason socialReason'
-      'phoneType space3 description description'
+      'fullName documentType companyName companyName'
+      'contactPreference space3 description description'
       ' phoneNumber email description description';
   }
   .notice {
@@ -157,27 +158,45 @@ interface mailData {
   description: string
   documentType: string
   email: string
-  names: string
+  fullName: string
   phoneNumber: string
-  phoneType: string
-  socialReason: string
+  contactPreference: string
+  companyName: string
 }
 
+const SpinnerContainer = styled.div`
+  width: 100%;
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
 const Contact = () => {
-  const onFinish = (values: mailData) => {
-    console.log(values)
-    // axios
-    //   .post('https://imcetron-backend-dev.herokuapp.com/api/mail', values)
-    //   .then((response) => {
-    //     message.success('El correo fue enviado con exito')
-    //   })
-    //   .catch((error) => {
-    //     message.error('El correo fue enviado con exito')
-    //   })
-  }
-
-  const onFinishFailed = (errorInfo: any) => {
-    console.log('Failed:', errorInfo)
+  const [loading, setLoading] = useState(false)
+  const onFinish = async (values: mailData) => {
+    setLoading(true)
+    try {
+      await emailjs.send(
+        'service_krs5pyp',
+        'template_m5f7n5c',
+        {
+          contactType: values.contactType,
+          description: values.description,
+          documentType: values.documentType,
+          email: values.email,
+          fullName: values.fullName,
+          phoneNumber: values.phoneNumber,
+          contactPreference: values.contactPreference,
+          companyName: values.companyName,
+        },
+        'jqt_OAVVu92aSdR3T'
+      )
+      setLoading(false)
+      message.success('Mensaje enviado correctamente')
+    } catch (error) {
+      message.error('Hubo un error al enviar el formulario')
+      setLoading(false)
+    }
   }
 
   return (
@@ -238,73 +257,84 @@ const Contact = () => {
             sobre nuestros productos.
           </p>
         </div>
-        <div className="fieldsContainer">
-          <div style={{ gridArea: 'space1' }} className="space1"></div>
-          <div style={{ gridArea: 'space2' }} className="space2"></div>
-          <div style={{ gridArea: 'space3' }} className="space3"></div>
-          <Form.Item
-            name="contactType"
-            rules={[{ required: true, message: 'Debe seleccionar una opción' }]}
-          >
-            <CustomSelect style={{ gridArea: 'contactType' }}>
-              <label>Tipo de Contacto</label>
-              <select>
-                <option value={''}>Selecciona</option>
-                <option value={'Persona natural'}>Persona natural</option>
-                <option value={'Persona juridica '}>Persona juridica </option>
-              </select>
-            </CustomSelect>
-          </Form.Item>
-          <FormInput
-            label="Nombre y apellido"
-            area="fullName"
-            message="Debe ingresar un dato valido"
-            name="names"
-          />
-          <FormInput
-            label="DNI / CE / RUC"
-            area="documentType"
-            message="Debe ingresar un dato valido"
-            name="documentType"
-          />
-          <FormInput
-            label="Razón social de la empresa"
-            area="socialReason"
-            message="Debe ingresar un dato valido"
-            name="socialReason"
-          />
-          <Form.Item
-            name="phoneType"
-            rules={[{ required: true, message: 'Debe seleccionar una opción' }]}
-          >
-            <CustomSelect style={{ gridArea: 'phoneType' }}>
-              <label>Preferencia de Contacto</label>
-              <select>
-                <option value={''}>Selecciona</option>
-                <option value={'Teléfono'}>Teléfono</option>
-                <option value={'Correo'}>Correo </option>
-              </select>
-            </CustomSelect>
-          </Form.Item>
-          <FormInput
-            label="Número de teléfono"
-            area="phoneNumber"
-            message="Número de teléfono inválido"
-            name="phoneNumber"
-          />
-          <FormInput
-            label="Correo electrónico"
-            area="email"
-            message="No es un correo válido"
-            name="email"
-          />
-          <FormTextarea
-            label="Descripción"
-            area="description"
-            message="Se requieren datos"
-            name="description"
-          />
-        </div>
+
+        {loading ? (
+          <SpinnerContainer>
+            <Spinner />
+          </SpinnerContainer>
+        ) : (
+          <div className="fieldsContainer">
+            <div style={{ gridArea: 'space1' }} className="space1"></div>
+            <div style={{ gridArea: 'space2' }} className="space2"></div>
+            <div style={{ gridArea: 'space3' }} className="space3"></div>
+            <Form.Item
+              name="contactType"
+              rules={[
+                { required: true, message: 'Debe seleccionar una opción' },
+              ]}
+            >
+              <CustomSelect style={{ gridArea: 'contactType' }}>
+                <label>Tipo de Contacto</label>
+                <select>
+                  <option value={''}>Selecciona</option>
+                  <option value={'Persona natural'}>Persona natural</option>
+                  <option value={'Persona juridica '}>Persona juridica </option>
+                </select>
+              </CustomSelect>
+            </Form.Item>
+            <FormInput
+              label="Nombre y apellido"
+              area="fullName"
+              message="Debe ingresar un dato valido"
+              name="fullName"
+            />
+            <FormInput
+              label="DNI / CE / RUC"
+              area="documentType"
+              message="Debe ingresar un dato valido"
+              name="documentType"
+            />
+            <FormInput
+              label="Razón social de la empresa"
+              area="companyName"
+              message="Debe ingresar un dato valido"
+              name="companyName"
+            />
+            <Form.Item
+              name="contactPreference"
+              rules={[
+                { required: true, message: 'Debe seleccionar una opción' },
+              ]}
+            >
+              <CustomSelect style={{ gridArea: 'contactPreference' }}>
+                <label>Preferencia de Contacto</label>
+                <select>
+                  <option value={''}>Selecciona</option>
+                  <option value={'Teléfono'}>Teléfono</option>
+                  <option value={'Correo'}>Correo </option>
+                </select>
+              </CustomSelect>
+            </Form.Item>
+            <FormInput
+              label="Número de teléfono"
+              area="phoneNumber"
+              message="Número de teléfono inválido"
+              name="phoneNumber"
+            />
+            <FormInput
+              label="Correo electrónico"
+              area="email"
+              message="No es un correo válido"
+              name="email"
+            />
+            <FormTextarea
+              label="Descripción"
+              area="description"
+              message="Se requieren datos"
+              name="description"
+            />
+          </div>
+        )}
         <p className="notice">
           Sus datos personales se encuentran protegidos y solo serán utilizados
           para comunicarnos con usted, según la Ley de Protección de Datos
