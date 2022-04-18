@@ -111,8 +111,15 @@ const properties = {
 
 const Card: FC<Product> = (props) => {
   const navigate = useNavigate()
-  const goToWhatsapp = () => {
-    alert('Go to WHATSAPP')
+  const openInNewTab = (url: string) => {
+    const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
+    if (newWindow) newWindow.opener = null
+  }
+
+  const goToWhatsapp = (data: any) => {
+    openInNewTab(
+      `https://wa.me/51959168186?text=Buenas!%20%20Estoy%20interesad@%20en%20el%20producto%20${data.names}%20de%20la%20marca%20${data.brand}`
+    )
   }
 
   const goToProductInformation = (productID: string) => {
@@ -142,7 +149,7 @@ const Card: FC<Product> = (props) => {
         </div>
       </div>
       <div className="buttonsCardContainer">
-        <Button onClick={goToWhatsapp}>
+        <Button onClick={() => goToWhatsapp(props)}>
           <p
             style={{
               display: 'flex',
