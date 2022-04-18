@@ -1,0 +1,5 @@
+.productsListViewContainer {
+  background-color: white;
+  padding: 6rem 0 2rem;
+  display: block;
+}

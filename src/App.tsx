@@ -1,7 +1,14 @@
-import './App.scss'
+import Root from 'routes'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+import 'react-slideshow-image/dist/styles.css'
+import { useEffect } from 'react'
 
 const App = () => {
-  return <div className="App">Running on develop</div>
+  useEffect(() => {
+    AOS.init()
+  }, [])
+  return <Root />
 }
 
 export default App
