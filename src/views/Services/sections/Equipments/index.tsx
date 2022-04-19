@@ -1,5 +1,6 @@
 import { Carousel } from 'antd'
 import { MaquinaTermoVacio } from 'assets'
+import { device } from 'helpers/media-screen'
 import React, { useRef } from 'react'
 import styled from 'styled-components'
 import './style.css'
@@ -8,7 +9,7 @@ const Container = styled('div')`
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin: 10vh auto 5vh auto;
+  margin: 5vh auto 5vh auto;
   gap: 5vh;
   align-items: center;
   justify-content: center;
@@ -21,20 +22,63 @@ const Title = styled('div')`
   flex-direction: row;
   justify-content: space-between;
   margin-top: 5vh;
+  @media ${device.tablet} {
+    width: 75%;
+    flex-direction: column;
+  }
 `
-const H3Custom = styled('h3')`
-height: '350px'
-width: '757px'
+const H3Custom = styled('div')`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `
 
 const DescriptionText = styled('div')`
+  width: 70%;
   margin-top: 50px;
+  h2 {
+    margin-left: 35vw;
+  }
+  p {
+    margin-left: 35vw;
+  }
+  @media ${device.tablet} {
+    width: 80%;
+
+    h2 {
+      margin-left: 20vw;
+    }
+    p {
+      margin-left: 20vw;
+    }
+  }
 `
 
-function Equipment() {
-  function onChange(a: any) {
-    console.log(a)
+const CustomCarousel = styled(Carousel)`
+  // height: 350px;
+  width: 100vw;
+  z-index: 2;
+  positon: relative;
+  @media ${device.tablet} {
+    width: 100vw;
   }
+`
+const CustomDescription = styled('p')`
+  width: 100%;
+`
+
+const CustomImg = styled('img')`
+  height: 100%;
+  width: 757px;
+  border-radius: 20px;
+  margin: auto;
+  @media ${device.tablet} {
+    height: 100%;
+    width: 100vw;
+  }
+`
+function Equipment() {
   const refImg = useRef<any>()
 
   const goTo = (slide: any) => {
@@ -57,61 +101,26 @@ function Equipment() {
           <p style={{ marginBottom: 0 }}>Alquiler y suministros</p>
           <h1>Equipos para proyectos</h1>
         </div>
-        <p style={{ width: '65%', marginLeft: '20px' }}>
+        <CustomDescription>
           Ofrecemos productos y servicios de excelente calidad, con
           profesionalismo,
           <br /> responsabilidad y eficacia, así como los equipos adecuados para
           atender <br /> eficazmente sus necesidades técnicas y/o tecnológicas
-        </p>
+        </CustomDescription>
       </Title>
 
       <div>
-        <Carousel
-          ref={refImg}
-          afterChange={onChange}
-          dots={false}
-          autoplay
-          style={{
-            height: '350px',
-            width: '757px',
-            zIndex: '2',
-            position: 'relative',
-          }}
-        >
-          <div
-            style={{
-              height: '350px',
-              width: '757px',
-            }}
-          >
-            <H3Custom>
-              <img
-                src={MaquinaTermoVacio}
-                alt=""
-                style={{
-                  height: '350px',
-                  width: '757px',
-                  borderRadius: '20px',
-                  margin: 'auto',
-                }}
-              />
-              <DescriptionText>
-                <p>Máquina de Termovacio 4000Lt/h Globe Core</p>
-              </DescriptionText>
-            </H3Custom>
-          </div>
+        <CustomCarousel ref={refImg} dots={false} autoplay>
+          <H3Custom>
+            <CustomImg src={MaquinaTermoVacio} alt="" />
+            <DescriptionText>
+              <p>Máquina de Termovacio 4000Lt/h Globe Core</p>
+            </DescriptionText>
+          </H3Custom>
+
           <div>
             <H3Custom>
-              <img
-                src={MaquinaTermoVacio}
-                alt=""
-                style={{
-                  height: '350px',
-                  width: '757px',
-                  borderRadius: '20px',
-                  margin: 'auto',
-                }}
-              />
+              <CustomImg src={MaquinaTermoVacio} alt="" />
             </H3Custom>
             <DescriptionText>
               <p>Máquina de Termovacio 4000Lt/h Globe Core Item 2</p>
@@ -119,16 +128,7 @@ function Equipment() {
           </div>
           <div>
             <H3Custom>
-              <img
-                src={MaquinaTermoVacio}
-                alt=""
-                style={{
-                  height: '350px',
-                  width: '757px',
-                  borderRadius: '20px',
-                  margin: 'auto',
-                }}
-              />
+              <CustomImg src={MaquinaTermoVacio} alt="" />
             </H3Custom>
             <DescriptionText>
               <p>Máquina de Termovacio 4000Lt/h Globe Core Item 3</p>
@@ -136,22 +136,13 @@ function Equipment() {
           </div>
           <div>
             <H3Custom>
-              <img
-                src={MaquinaTermoVacio}
-                alt=""
-                style={{
-                  height: '350px',
-                  width: '757px',
-                  borderRadius: '20px',
-                  margin: 'auto',
-                }}
-              />
+              <CustomImg src={MaquinaTermoVacio} alt="" />
             </H3Custom>
             <DescriptionText>
               <p>Máquina de Termovacio 4000Lt/h Globe Core Item 4</p>
             </DescriptionText>
           </div>
-        </Carousel>
+        </CustomCarousel>
         <div
           style={{
             display: 'flex',
