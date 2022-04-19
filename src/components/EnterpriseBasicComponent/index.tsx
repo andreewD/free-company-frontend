@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react'
 import styled from 'styled-components'
 import { Steps, Popover, StepsProps } from 'antd'
+import { device } from 'helpers/media-screen'
 
 interface Props {
   topTitle: string
@@ -12,20 +13,34 @@ interface Props {
 
 const Container = styled('div')`
   width: 100vh;
-  height: 200px;
+
   display: flex;
   flex-direction: column;
-  margin: 10vh auto 400px auto;
+  margin: 10vh auto 20vh auto;
   gap: 15px;
+  @media ${device.tablet} {
+    width: 100vw;
+
+    margin: 10vh auto 10vh auto;
+  }
 `
 
 const Title = styled('div')`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  @media ${device.tablet} {
+    width: 80%;
+    flex-direction: column;
+    margin: auto;
+  }
 `
 const CustomImg = styled('img')`
   margin-top: 20px;
+  @media ${device.tablet} {
+    height: 100%;
+    width: 98vw;
+  }
 `
 
 const EnterpriseBasicComponent: React.FC<Props> = (props: Props) => {

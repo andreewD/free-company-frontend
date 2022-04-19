@@ -29,7 +29,7 @@ const CustomImg = styled('img')`
 
 const MainContainer = styled('section')`
   height: 100vh;
-  width: 100%;
+  width: 100vw;
   position: relative;
   background-image: url(${EnterpriseImg});
   background-position: center center;

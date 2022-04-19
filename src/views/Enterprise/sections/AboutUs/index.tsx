@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 import { Space } from 'antd'
 const Container = styled('div')`
-  width: 100vh;
-  height: 200px;
+  width: 80vw;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;

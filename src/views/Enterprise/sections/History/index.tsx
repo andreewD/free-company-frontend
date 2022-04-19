@@ -8,55 +8,13 @@ function History() {
   cumplidos desde los inicios de Imcetrons hasta la actualidad.`
 
   return (
-    <>
-      <EnterpriseBasicComponent
-        topTitle="Trayectoria"
-        mainTitle="Nuestra historia"
-        rightText={trayectoryText}
-        imgPath={HistoryImg}
-      />
-    </>
+    <EnterpriseBasicComponent
+      topTitle="Trayectoria"
+      mainTitle="Nuestra historia"
+      rightText={trayectoryText}
+      imgPath={HistoryImg}
+    ></EnterpriseBasicComponent>
   )
 }
 
 export default History
-
-{
-  /* <>
-{/* <EnterpriseBasicComponent
-  topTitle="Trayectoria"
-  mainTitle="Nuestra historia"
-  rightText={trayectoryText}
->
-  <></>
-</EnterpriseBasicComponent> */
-}
-
-// <GrayContainer>
-// <Steps
-//   progressDot
-//   current={4}
-//   style={{ margin: '150px 0 150px 0', width: '80%' }}
-// >
-//   <Step
-//     title="1998"
-//     description="Se funda la empresa Imcetron S.R.L."
-//     style={{ fontWeight: 'bold' }}
-//   />
-//   <Step
-//     title="1998"
-//     description="Se funda la empresa Imcetron S.R.L."
-//     style={{ fontWeight: 'bold' }}
-//   />
-//   <Step
-//     title="1998"
-//     description="Se funda la empresa Imcetron S.R.L."
-//     style={{ fontWeight: 'bold' }}
-//   />
-//   <Step
-//     title="1998"
-//     description="Se funda la empresa Imcetron S.R.L."
-//     style={{ fontWeight: 'bold' }}
-//   />
-// </Steps>
-// </GrayContainer>
