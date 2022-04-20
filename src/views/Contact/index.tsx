@@ -3,6 +3,7 @@ import { FormInput, FormTextarea, Spinner } from 'components'
 import { Form, Button, message } from 'antd'
 import emailjs from '@emailjs/browser'
 import { useState } from 'react'
+import { device } from 'helpers/media-screen'
 
 const ContactSection = styled.section`
   display: flex;
@@ -27,6 +28,22 @@ const CustomForm = styled(Form)`
       'fullName documentType companyName companyName'
       'contactPreference space3 description description'
       ' phoneNumber email description description';
+
+    @media ${device.laptopM} {
+      display: flex;
+      flex-direction: column;
+    }
+    @media ${device.tablet} {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  @media ${device.laptopM} {
+    width: 80vw;
+    margin-left: 5vw;
+  }
+  @media ${device.tablet} {
+    width: 80vw;
   }
   .notice {
     font-size: 1rem;
@@ -36,6 +53,10 @@ const CustomForm = styled(Form)`
     justify-content: flex-end;
     button {
       cursor: pointer;
+    }
+    @media ${device.tablet} {
+      justify-content: center;
+      align-items: center;
     }
   }
   .space1 {
@@ -56,11 +77,24 @@ const MapSection = styled('div')`
     font-size: 1.25rem;
     font-weight: 700;
     border-bottom: 1px solid black;
+    cursor: pointer;
+    @media ${device.tablet} {
+      margin-left: 16vw;
+    }
+    @media ${device.laptopM} {
+      margin-left: 8vw;
+    }
   }
   .mapContainer {
     width: 100%;
     img {
       width: 100%;
+      @media ${device.tablet} {
+        width: 100wh;
+      }
+      @media ${device.laptopM} {
+        width: 100%;
+      }
     }
   }
 `
@@ -75,16 +109,31 @@ const InformationContainer = styled('div')`
     font-size: 40px;
     font-weight: 600;
   }
+  @media ${device.tablet} {
+    width: 80%;
+    margin-left: 12vw;
+  }
+  @media ${device.laptopM} {
+    width: 90%;
+    margin-left: 5vw;
+  }
 `
 const CustomLine = styled('div')`
   height: 1px;
   width: 100%;
   background-color: black;
+  @media ${device.tablet} {
+    display: none;
+  }
 `
 
 const Information = styled('div')`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  @media ${device.tablet} {
+    display: flex;
+    flex-direction: column;
+  }
 `
 const ColumnInformation = styled('div')`
   display: flex;
@@ -238,7 +287,13 @@ const Contact = () => {
         </Information>
       </InformationContainer>
       <MapSection>
-        <h4>Mostrar en el mapa</h4>
+        <h4
+          onClick={() => {
+            window.open('https://goo.gl/maps/RwcZRFZgabbDfcnL8', '_blank')
+          }}
+        >
+          Mostrar en el mapa
+        </h4>
         <div className="mapContainer">
           <img src="https://i.ibb.co/CmYjF8W/mapa-ref.png" alt="map" />
         </div>
