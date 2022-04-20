@@ -107,8 +107,8 @@ const ButtonContainer = styled('div')`
   }
 `
 const CustomCarousel = styled(Carousel)`
-  // height: 350px;
-  width: 100vw;
+  height: 50vh;
+  width: 60vw;
   z-index: 2;
   positon: relative;
   @media ${device.tablet} {
@@ -137,14 +137,13 @@ function EquipmentForMedition() {
     <Container>
       <Title>
         <div>
-          <p style={{ marginBottom: 0 }}>Alquiler y suministros</p>
-          <h1>Equipos para proyectos</h1>
+          {/* <p style={{ marginBottom: 0 }}>Alquiler y suministros</p> */}
+          <h1>Equipos de medición</h1>
         </div>
         <p style={{ width: '65%', marginLeft: '20px' }}>
-          Ofrecemos productos y servicios de excelente calidad, con
-          profesionalismo,
-          <br /> responsabilidad y eficacia, así como los equipos adecuados para
-          atender <br /> eficazmente sus necesidades técnicas y/o tecnológicas
+          Nos destacamos en realizar mantenimientos de seccionadores e<br />
+          interruptores, mantenimiento de celdas y tableros eléctricos, y<br />
+          mantenimiento y medición de mallas y pozos a tierra.
         </p>
       </Title>
 

@@ -98,8 +98,9 @@ const ButtonContainer = styled('div')`
   display: flex;
   justify-content: left;
   align-items: center;
-  margin-top: 2vh;
-  margin-bottom: 10vh;
+  margin-top: -22vh;
+  margin-left: -30vw;
+  margin-bottom: 20vh;
   z-index: 1;
   position: relative;
   @media ${device.tablet} {
@@ -150,7 +151,7 @@ function Maintenance() {
         <CustomButton2>CONTÁCTANOS</CustomButton2>
       </Title>
 
-      <CustomCarousel ref={refImg} dots={false}>
+      <CustomCarousel ref={refImg} dots={false} autoplay>
         <H3Custom>
           <CustomImg src={ServicesFirstImage} alt="" />
           <DescriptionText>
@@ -209,12 +210,12 @@ function Maintenance() {
           </DescriptionText>
         </div>
       </CustomCarousel>
-      <ButtonContainer>
+      {/* <ButtonContainer>
         <CustomDot onClick={() => goTo(0)} />
         <CustomDot onClick={() => goTo(1)} />
         <CustomDot onClick={() => goTo(2)} />
         <CustomDot onClick={() => goTo(3)} />
-      </ButtonContainer>
+      </ButtonContainer> */}
     </Container>
   )
 }

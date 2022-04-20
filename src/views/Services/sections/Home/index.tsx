@@ -30,7 +30,7 @@ const CustomImg = styled('img')`
 
 const MainContainer = styled('section')`
   height: 100vh;
-  width: 100%;
+  // width: 100%;
   position: relative;
   background-image: url(${ServicesImg});
   background-repeat: no-repeat;

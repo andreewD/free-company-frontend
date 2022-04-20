@@ -38,26 +38,27 @@ const DescriptionText = styled('div')`
   width: 70%;
   margin-top: 50px;
   h2 {
-    margin-left: 35vw;
+    margin-left: 15vw;
   }
   p {
-    margin-left: 35vw;
+    margin-left: 15vw;
   }
   @media ${device.tablet} {
     width: 80%;
 
     h2 {
-      margin-left: 20vw;
+      margin-left: 10vw;
     }
     p {
-      margin-left: 20vw;
+      margin-left: 10vw;
     }
   }
 `
 
 const CustomCarousel = styled(Carousel)`
-  // height: 350px;
-  width: 100vw;
+  // height: 10;
+  margin-bottom: 5vh;
+  width: 80vw;
   z-index: 2;
   positon: relative;
   @media ${device.tablet} {
@@ -143,12 +144,13 @@ function Equipment() {
             </DescriptionText>
           </div>
         </CustomCarousel>
-        <div
+        {/* <div
           style={{
             display: 'flex',
             justifyContent: 'left',
             alignItems: 'center',
-            marginTop: '2vh',
+            marginTop: '-7vh',
+            marginLeft: '20vw',
             marginBottom: '10vh',
             zIndex: '3',
             position: 'relative',
@@ -158,7 +160,7 @@ function Equipment() {
           <button onClick={() => goTo(1)} style={btnStyle} />
           <button onClick={() => goTo(2)} style={btnStyle} />
           <button onClick={() => goTo(3)} style={btnStyle} />
-        </div>
+        </div> */}
       </div>
     </Container>
   )
