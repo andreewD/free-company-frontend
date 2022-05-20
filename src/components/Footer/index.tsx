@@ -9,7 +9,7 @@ const CustomFooter = styled.footer`
 const Footer = () => {
   return (
     <CustomFooter className="generalFooter">
-      Imcetron &copy; 2022 | Todos los derechos resevados
+      Free company &copy; 2022 | Todos los derechos resevados
     </CustomFooter>
   )
 }

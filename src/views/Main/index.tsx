@@ -10,7 +10,7 @@ const Main = () => {
   return (
     <main>
       <Home />
-      <FeaturedProducts />
+      {/* <FeaturedProducts /> */}
       <Sectors />
       <Customers />
       <Statistics />

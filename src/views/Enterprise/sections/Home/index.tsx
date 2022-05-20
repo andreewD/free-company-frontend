@@ -1,4 +1,4 @@
-import { ArrowButton } from 'assets'
+import { ArrowButton, ServicesImg } from 'assets'
 import styled, { keyframes } from 'styled-components'
 import { EnterpriseImg } from 'assets'
 const flicker = keyframes`
@@ -31,7 +31,7 @@ const MainContainer = styled('section')`
   height: 100vh;
   // width: 100vw;
   position: relative;
-  background-image: url(${EnterpriseImg});
+  background-image: url(${ServicesImg});
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
